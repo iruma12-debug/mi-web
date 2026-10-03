@@ -38,6 +38,16 @@ if (!fs.existsSync(uploadsFolder)) {
 
 app.use("/uploads", express.static(uploadsFolder));
 
+// ==========================================
+// INTERFAZ WEB
+// ==========================================
+const frontendFolder = path.resolve(__dirname, "..");
+
+app.use("/backend", (req, res) => {
+    res.sendStatus(404);
+});
+app.use(express.static(frontendFolder));
+
 const videoExtensions = {
     "video/mp4": ".mp4",
     "video/webm": ".webm",
@@ -199,11 +209,7 @@ if (!configExists) {
 // ==========================================
 
 app.get("/", (req, res) => {
-    res.json({
-        ok: true,
-        nombre: "Iru Codex",
-        mensaje: "Backend funcionando correctamente 🚀"
-    });
+    res.sendFile(path.join(frontendFolder, "index.html"));
 });
 
 // ==========================================
