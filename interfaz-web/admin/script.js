@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const PROJECTS_KEY = "iru-codex-projects";
     const CATALOGS_KEY = "iru-codex-catalogos";
     const SETTINGS_KEY = "iru-codex-configuracion";
-    const API_BASE = "http://localhost:3100/api";
+    const API_BASE = "/api";
     const byId = id => document.getElementById(id);
     const ui = {
         sidebar: byId("sidebar"), overlay: byId("sidebarOverlay"),
@@ -310,7 +310,6 @@ document.addEventListener("DOMContentLoaded", () => {
             published: ui.projectPublished.checked
         };
 
-        let savedToBackend = false;
         try {
             const response = await fetch(`${API_BASE}/proyectos${editingId ? `/${editingId}` : ""}`, {
                 method: editingId ? "PUT" : "POST",
@@ -320,10 +319,10 @@ document.addEventListener("DOMContentLoaded", () => {
             const result = await response.json();
             if (!response.ok) throw new Error(result.error || result.mensaje || "El backend rechazó el proyecto.");
             project = { ...project, ...(result.proyecto || {}) };
-            savedToBackend = true;
             backendProjectIds.add(String(project.id));
         } catch (error) {
-            console.warn("No se pudo guardar en el backend; se conserva una copia local.", error);
+            showMessage("No se pudo guardar el proyecto", error.message);
+            return;
         }
 
         const next = editingId
@@ -337,7 +336,7 @@ document.addEventListener("DOMContentLoaded", () => {
         resetProjectForm();
         showMessage(
             "Proyecto guardado",
-            `${savedToBackend ? "Se guardó en el servidor." : "Se guardó solo en este navegador."} Coloca su index.html en admin/proyectohtml/${folder}/.`
+            `Se guardó en el servidor. Coloca su index.html en admin/proyectohtml/${folder}/.`
         );
     }
 
@@ -359,7 +358,8 @@ document.addEventListener("DOMContentLoaded", () => {
             if (!response.ok) throw new Error(result.error || "El backend rechazó el catálogo.");
             catalog = { ...catalog, ...(result.catalogo || {}) };
         } catch (error) {
-            console.warn("No se pudo guardar el catálogo en el backend; se conserva localmente.", error);
+            showMessage("No se pudo guardar el catálogo", error.message);
+            return;
         }
         const next = [catalog, ...catalogs];
         if (!writeStorage(CATALOGS_KEY, next)) return;
@@ -368,7 +368,7 @@ document.addEventListener("DOMContentLoaded", () => {
         updateDashboard();
         closeModal(ui.catalogModal);
         ui.catalogForm.reset();
-        showMessage("Catálogo creado", "Se guardó en este navegador.");
+        showMessage("Catálogo creado", "Se guardó en el servidor.");
     }
 
     document.querySelectorAll(".nav-item[data-section]").forEach(button => {
@@ -547,14 +547,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const remoteProjects = Array.isArray(projectData.proyectos) ? projectData.proyectos : [];
         const remoteCatalogs = Array.isArray(catalogData.catalogos) ? catalogData.catalogos : [];
         backendProjectIds = new Set(remoteProjects.map(project => String(project.id)));
-        const localProjects = readStorage(PROJECTS_KEY, []);
-        const localCatalogs = readStorage(CATALOGS_KEY, []);
-        projects = [...remoteProjects, ...localProjects.filter(local =>
-            !remoteProjects.some(remote => String(remote.id) === String(local.id))
-        )];
-        catalogs = [...remoteCatalogs, ...localCatalogs.filter(local =>
-            !remoteCatalogs.some(remote => String(remote.id) === String(local.id))
-        )];
+        projects = remoteProjects;
+        catalogs = remoteCatalogs;
         renderProjects();
         renderCatalogs();
         updateDashboard();

@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const body = document.body;
     const PROJECTS_STORAGE_KEY = "iru-codex-projects";
-    const API_BASE = "http://localhost:3100/api";
+    const API_BASE = "/api";
 
     const modeButton =
         document.getElementById("modeButton");
@@ -927,16 +927,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     backend: true
                 }))
                 : [];
-            const mergedProjects = new Map(
-                serverProjects.map(project => [String(project.id), project])
-            );
-            readSavedProjects().forEach(project => {
-                if (!mergedProjects.has(String(project.id))) {
-                    mergedProjects.set(String(project.id), project);
-                }
-            });
-
-            renderSavedProjects([...mergedProjects.values()]);
+            renderSavedProjects(serverProjects);
         } catch (error) {
             console.warn("No se pudo cargar el catálogo desde el backend; se usan datos locales.", error);
             renderSavedProjects();

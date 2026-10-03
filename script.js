@@ -4,7 +4,7 @@
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    const API_BASE = "http://localhost:3100/api";
+    const API_BASE = "/api";
 
     /* ========================================================
        ELEMENTOS

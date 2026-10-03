@@ -18,6 +18,7 @@ const premiumProjectView = document.querySelector("#premium-project-view");
 const premiumProjectFrame = document.querySelector("#premium-project-frame");
 const premiumProjectBack = document.querySelector("#premium-project-back");
 const paymentCard = document.querySelector(".card");
+const API_BASE = "/api";
 
 premiumCodeButton.addEventListener("click", async () => {
     const premiumCode = premiumCodeInput.value.trim();
@@ -41,7 +42,7 @@ premiumCodeButton.addEventListener("click", async () => {
     premiumCodeMessage.style.color = "#c4c4d0";
 
     try {
-        const response = await fetch("http://localhost:3100/api/premium/verificar", {
+        const response = await fetch(`${API_BASE}/premium/verificar`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
