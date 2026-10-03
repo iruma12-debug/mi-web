@@ -1,0 +1,781 @@
+/* =========================================================
+   IRU CODEX - PERSONALIZADOS
+   CSS COMPLETO
+   ========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: #03060b;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* =========================================================
+   FONDO
+   ========================================================= */
+
+.background {
+    position: fixed;
+    inset: 0;
+    z-index: -10;
+    background:
+        radial-gradient(
+            circle at 50% -10%,
+            rgba(0, 119, 255, 0.20),
+            transparent 42%
+        ),
+        radial-gradient(
+            circle at 100% 70%,
+            rgba(0, 82, 255, 0.08),
+            transparent 35%
+        ),
+        #03060b;
+}
+
+.glow {
+    position: fixed;
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    pointer-events: none;
+    filter: blur(100px);
+    z-index: -9;
+}
+
+.glow.one {
+    top: -150px;
+    left: -120px;
+    background: #0077ff;
+    opacity: 0.14;
+}
+
+.glow.two {
+    right: -150px;
+    bottom: -130px;
+    background: #004cff;
+    opacity: 0.10;
+}
+
+/* =========================================================
+   CHISPAS
+   ========================================================= */
+
+.spark {
+    position: fixed;
+    bottom: -20px;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: #45aaff;
+    box-shadow: 0 0 10px #168cff;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 0;
+    animation: subir 9s linear infinite;
+}
+
+.spark:nth-of-type(4) {
+    left: 5%;
+    animation-delay: 0s;
+}
+
+.spark:nth-of-type(5) {
+    left: 12%;
+    animation-delay: 1.2s;
+}
+
+.spark:nth-of-type(6) {
+    left: 20%;
+    animation-delay: 2.3s;
+}
+
+.spark:nth-of-type(7) {
+    left: 29%;
+    animation-delay: 0.7s;
+}
+
+.spark:nth-of-type(8) {
+    left: 38%;
+    animation-delay: 3.1s;
+}
+
+.spark:nth-of-type(9) {
+    left: 47%;
+    animation-delay: 1.8s;
+}
+
+.spark:nth-of-type(10) {
+    left: 56%;
+    animation-delay: 4.2s;
+}
+
+.spark:nth-of-type(11) {
+    left: 65%;
+    animation-delay: 2.8s;
+}
+
+.spark:nth-of-type(12) {
+    left: 74%;
+    animation-delay: 5.1s;
+}
+
+.spark:nth-of-type(13) {
+    left: 83%;
+    animation-delay: 3.7s;
+}
+
+.spark:nth-of-type(14) {
+    left: 91%;
+    animation-delay: 6s;
+}
+
+.spark:nth-of-type(15) {
+    left: 24%;
+    animation-delay: 4.7s;
+}
+
+.spark:nth-of-type(16) {
+    left: 68%;
+    animation-delay: 6.8s;
+}
+
+.spark:nth-of-type(17) {
+    left: 43%;
+    animation-delay: 7.3s;
+}
+
+.spark:nth-of-type(18) {
+    left: 96%;
+    animation-delay: 2.1s;
+}
+
+@keyframes subir {
+
+    0% {
+        transform: translateY(0) translateX(0);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 0.9;
+    }
+
+    50% {
+        transform: translateY(-50vh) translateX(15px);
+        opacity: 0.65;
+    }
+
+    100% {
+        transform: translateY(-110vh) translateX(-15px);
+        opacity: 0;
+    }
+}
+
+/* =========================================================
+   CONTENEDOR PRINCIPAL
+   ========================================================= */
+
+.container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 540px;
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 25px 16px 45px;
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.header {
+    padding: 12px 5px 30px;
+    text-align: center;
+}
+
+.logo {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 19px;
+    object-fit: cover;
+
+    background:
+        linear-gradient(
+            145deg,
+            #0b2035,
+            #06101b
+        );
+
+    border: 1px solid rgba(52, 165, 255, 0.28);
+
+    color: #48b0ff;
+
+    font-size: 25px;
+
+    box-shadow:
+        0 0 30px rgba(0, 119, 255, 0.12),
+        inset 0 1px 0 rgba(255, 255, 255, 0.07);
+}
+
+.header h1 {
+    margin-top: 17px;
+
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: -1.2px;
+}
+
+.header h1 span {
+    color: #2196ff;
+}
+
+.header p {
+    max-width: 350px;
+    margin: 11px auto 0;
+
+    color: #7d8da3;
+
+    font-size: 13px;
+    line-height: 1.55;
+}
+
+/* =========================================================
+   ESTADO
+   ========================================================= */
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    margin-top: 17px;
+    padding: 7px 12px;
+
+    border-radius: 30px;
+
+    background: rgba(0, 119, 255, 0.07);
+
+    border: 1px solid rgba(0, 145, 255, 0.18);
+
+    color: #53b5ff;
+
+    font-size: 9px;
+    font-weight: 700;
+}
+
+.status-dot {
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background: #168cff;
+
+    box-shadow: 0 0 10px #168cff;
+
+    animation: pulsar 1.8s ease-in-out infinite;
+}
+
+@keyframes pulsar {
+
+    0%,
+    100% {
+        transform: scale(0.75);
+        opacity: 0.5;
+    }
+
+    50% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* =========================================================
+   TITULO DE SECCION
+   ========================================================= */
+
+.section-title {
+    margin: 0 3px 15px;
+}
+
+.section-title h2 {
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.section-title p {
+    margin-top: 5px;
+
+    color: #62738a;
+
+    font-size: 11px;
+}
+
+/* =========================================================
+   LISTA DE PROYECTOS
+   ========================================================= */
+
+.projects {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* =========================================================
+   TARJETAS
+   ========================================================= */
+
+.project {
+    position: relative;
+
+    width: 100%;
+    padding: 17px;
+
+    overflow: hidden;
+
+    border-radius: 19px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(11, 25, 41, 0.96),
+            rgba(4, 9, 16, 0.98)
+        );
+
+    border: 1px solid rgba(107, 151, 192, 0.12);
+
+    box-shadow:
+        0 15px 35px rgba(0, 0, 0, 0.30);
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.project::after {
+    content: "";
+
+    position: absolute;
+
+    width: 160px;
+    height: 160px;
+
+    top: -100px;
+    right: -90px;
+
+    border-radius: 50%;
+
+    background: #0077ff;
+
+    filter: blur(65px);
+
+    opacity: 0.07;
+
+    pointer-events: none;
+}
+
+.project.featured {
+    border-color: rgba(28, 145, 255, 0.28);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(8, 30, 52, 0.98),
+            rgba(4, 10, 17, 0.98)
+        );
+}
+
+/* =========================================================
+   ETIQUETA DESTACADO
+   ========================================================= */
+
+.featured-label {
+    position: absolute;
+
+    top: 11px;
+    right: 11px;
+
+    padding: 5px 8px;
+
+    border-radius: 7px;
+
+    background: rgba(0, 119, 255, 0.08);
+
+    border: 1px solid rgba(35, 156, 255, 0.18);
+
+    color: #50b4ff;
+
+    font-size: 7px;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+}
+
+/* =========================================================
+   PARTE SUPERIOR DE TARJETA
+   ========================================================= */
+
+.project-top {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+}
+
+.project-icon {
+    width: 50px;
+    height: 50px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #0b3155,
+            #061321
+        );
+
+    border: 1px solid rgba(47, 166, 255, 0.22);
+
+    color: #55baff;
+
+    font-size: 20px;
+
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.project-info {
+    min-width: 0;
+    flex: 1;
+}
+
+.project-info h3 {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.project-info p {
+    margin-top: 5px;
+
+    color: #718197;
+
+    font-size: 10px;
+    line-height: 1.45;
+}
+
+/* =========================================================
+   PARTE INFERIOR
+   ========================================================= */
+
+.project-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 10px;
+
+    margin-top: 16px;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.tag {
+    padding: 5px 7px;
+
+    border-radius: 6px;
+
+    background: rgba(255, 255, 255, 0.025);
+
+    border: 1px solid rgba(255, 255, 255, 0.055);
+
+    color: #68788e;
+
+    font-size: 8px;
+}
+
+.button {
+    flex-shrink: 0;
+
+    padding: 9px 13px;
+
+    border: 0;
+    border-radius: 9px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #1994ff,
+            #005ed8
+        );
+
+    color: #ffffff;
+
+    font-size: 9px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 7px 20px rgba(0, 105, 230, 0.22);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.button:active {
+    transform: scale(0.95);
+}
+
+/* =========================================================
+   MODAL
+   ========================================================= */
+
+.modal {
+    position: fixed;
+
+    inset: 0;
+
+    display: none;
+
+    align-items: flex-end;
+    justify-content: center;
+
+    padding: 0;
+
+    background: rgba(0, 0, 0, 0.76);
+
+    z-index: 100;
+}
+
+.modal.active {
+    display: flex;
+}
+
+.modal-box {
+    position: relative;
+
+    width: 100%;
+    max-width: 540px;
+
+    padding: 25px 18px 30px;
+
+    border-radius: 25px 25px 0 0;
+
+    background:
+        linear-gradient(
+            145deg,
+            #0b1b2d,
+            #030911
+        );
+
+    border: 1px solid rgba(35, 153, 255, 0.20);
+
+    box-shadow:
+        0 -20px 60px rgba(0, 0, 0, 0.60);
+
+    animation: aparecerModal 0.25s ease-out;
+}
+
+@keyframes aparecerModal {
+
+    from {
+        transform: translateY(100%);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+.close {
+    position: absolute;
+
+    top: 15px;
+    right: 15px;
+
+    width: 32px;
+    height: 32px;
+
+    border: 0;
+
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.05);
+
+    color: #8b9bae;
+
+    font-size: 18px;
+
+    cursor: pointer;
+}
+
+.modal-box h2 {
+    padding-right: 45px;
+
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.modal-box > p {
+    margin-top: 8px;
+
+    color: #718197;
+
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.modal-options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    margin-top: 19px;
+}
+
+.option {
+    padding: 14px;
+
+    border-radius: 12px;
+
+    background: rgba(255, 255, 255, 0.025);
+
+    border: 1px solid rgba(255, 255, 255, 0.05);
+
+    color: #91a0b3;
+
+    font-size: 11px;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease;
+}
+
+.option span {
+    margin-right: 6px;
+    color: #3caaff;
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.footer {
+    margin-top: 30px;
+    padding-top: 18px;
+
+    text-align: center;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.footer strong {
+    color: #8292a7;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+}
+
+.footer p {
+    margin-top: 6px;
+
+    color: #4f5f73;
+
+    font-size: 9px;
+}
+
+/* =========================================================
+   PC
+   ========================================================= */
+
+@media (min-width: 700px) {
+
+    .container {
+        padding-top: 45px;
+    }
+
+    .project:hover {
+        transform: translateY(-4px);
+
+        border-color: rgba(30, 150, 255, 0.30);
+
+        box-shadow:
+            0 22px 50px rgba(0, 0, 0, 0.45);
+    }
+
+    .button:hover {
+        transform: translateY(-1px);
+
+        box-shadow:
+            0 10px 28px rgba(0, 105, 230, 0.36);
+    }
+
+    .option:hover {
+        background: rgba(20, 130, 220, 0.05);
+
+        border-color:
+            rgba(35, 153, 255, 0.20);
+    }
+}
+
+/* =========================================================
+   PANTALLAS PEQUEÑAS
+   ========================================================= */
+
+@media (max-width: 380px) {
+
+    .container {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .project {
+        padding: 14px;
+    }
+
+    .project-icon {
+        width: 45px;
+        height: 45px;
+    }
+
+    .project-bottom {
+        align-items: flex-end;
+    }
+
+    .button {
+        padding: 8px 10px;
+    }
+}

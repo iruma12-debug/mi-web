@@ -1,0 +1,1304 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Jardín de Rosas</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+
+body{
+    background:#020508;
+    font-family:Georgia,serif;
+}
+
+/* =========================================================
+   ESCENA
+========================================================= */
+
+.scene{
+    position:relative;
+    width:100vw;
+    height:100vh;
+    overflow:hidden;
+    perspective:1400px;
+    background:
+        linear-gradient(
+            to bottom,
+            #020711 0%,
+            #071525 28%,
+            #102b31 52%,
+            #173b25 72%,
+            #07180c 100%
+        );
+}
+
+/* =========================================================
+   CIELO
+========================================================= */
+
+.skyGlow{
+    position:absolute;
+    width:850px;
+    height:850px;
+    left:50%;
+    top:-390px;
+    transform:translateX(-50%);
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255,226,142,.22) 0%,
+            rgba(255,205,105,.08) 25%,
+            transparent 67%
+        );
+
+    filter:blur(10px);
+}
+
+/* =========================================================
+   LUNA
+========================================================= */
+
+.moon{
+    position:absolute;
+    right:13%;
+    top:11%;
+
+    width:105px;
+    height:105px;
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #fffde8,
+            #fff4bd 45%,
+            #d9d4a8 78%,
+            #9d9b7b 100%
+        );
+
+    box-shadow:
+        0 0 25px rgba(255,240,180,.7),
+        0 0 80px rgba(255,230,150,.28);
+
+    animation:moonFloat 8s ease-in-out infinite;
+}
+
+.moon::before,
+.moon::after{
+    content:"";
+    position:absolute;
+    border-radius:50%;
+    background:rgba(120,115,85,.12);
+}
+
+.moon::before{
+    width:18px;
+    height:18px;
+    left:25px;
+    top:32px;
+}
+
+.moon::after{
+    width:11px;
+    height:11px;
+    right:24px;
+    top:20px;
+}
+
+@keyframes moonFloat{
+    0%,100%{
+        transform:translateY(0);
+    }
+    50%{
+        transform:translateY(-8px);
+    }
+}
+
+/* =========================================================
+   ESTRELLAS
+========================================================= */
+
+.stars{
+    position:absolute;
+    inset:0;
+}
+
+.star{
+    position:absolute;
+    width:3px;
+    height:3px;
+    border-radius:50%;
+    background:#fff;
+    box-shadow:0 0 8px #fff;
+    animation:twinkle 3s ease-in-out infinite;
+}
+
+.star:nth-child(1){left:7%;top:14%;animation-delay:.2s}
+.star:nth-child(2){left:15%;top:28%;animation-delay:1.1s}
+.star:nth-child(3){left:23%;top:9%;animation-delay:2s}
+.star:nth-child(4){left:32%;top:20%;animation-delay:.6s}
+.star:nth-child(5){left:43%;top:8%;animation-delay:1.8s}
+.star:nth-child(6){left:53%;top:25%;animation-delay:2.5s}
+.star:nth-child(7){left:64%;top:13%;animation-delay:.4s}
+.star:nth-child(8){left:76%;top:23%;animation-delay:1.5s}
+.star:nth-child(9){left:86%;top:8%;animation-delay:2.2s}
+.star:nth-child(10){left:94%;top:31%;animation-delay:.9s}
+.star:nth-child(11){left:47%;top:34%;animation-delay:1.4s}
+.star:nth-child(12){left:28%;top:35%;animation-delay:2.4s}
+
+@keyframes twinkle{
+    0%,100%{
+        opacity:.2;
+        transform:scale(.6);
+    }
+    50%{
+        opacity:1;
+        transform:scale(1.6);
+    }
+}
+
+/* =========================================================
+   MONTAÑAS
+========================================================= */
+
+.mountains{
+    position:absolute;
+    left:-10%;
+    bottom:28%;
+    width:120%;
+    height:370px;
+    transform:translateZ(-200px) scale(1.15);
+}
+
+.mountain{
+    position:absolute;
+    bottom:0;
+
+    width:0;
+    height:0;
+
+    border-left:250px solid transparent;
+    border-right:250px solid transparent;
+    border-bottom:390px solid #0a1c1b;
+
+    filter:drop-shadow(0 15px 20px rgba(0,0,0,.3));
+}
+
+.mountain::after{
+    content:"";
+    position:absolute;
+
+    left:-250px;
+    top:0;
+
+    width:500px;
+    height:390px;
+
+    background:
+        linear-gradient(
+            135deg,
+            transparent 46%,
+            rgba(210,220,190,.08) 47%,
+            rgba(210,220,190,.08) 53%,
+            transparent 54%
+        );
+
+    clip-path:polygon(
+        50% 0,
+        72% 35%,
+        100% 100%,
+        0 100%,
+        28% 35%
+    );
+}
+
+.m1{
+    left:2%;
+    transform:scale(1.2);
+}
+
+.m2{
+    left:27%;
+    bottom:-20px;
+    transform:scale(1.5);
+    border-bottom-color:#0d2725;
+}
+
+.m3{
+    left:58%;
+    transform:scale(1.25);
+    border-bottom-color:#091b1d;
+}
+
+.m4{
+    left:79%;
+    bottom:-40px;
+    transform:scale(1.45);
+    border-bottom-color:#071719;
+}
+
+/* =========================================================
+   NIEBLA
+========================================================= */
+
+.fog{
+    position:absolute;
+    left:-20%;
+    bottom:28%;
+    width:140%;
+    height:180px;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(210,230,207,.13),
+            transparent 70%
+        );
+
+    filter:blur(22px);
+
+    animation:fogMove 16s ease-in-out infinite alternate;
+}
+
+@keyframes fogMove{
+    from{
+        transform:translateX(-5%);
+    }
+    to{
+        transform:translateX(5%);
+    }
+}
+
+/* =========================================================
+   SUELO
+========================================================= */
+
+.ground{
+    position:absolute;
+    left:-15%;
+    bottom:-35%;
+    width:130%;
+    height:75%;
+
+    border-radius:50% 50% 0 0;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 5%,
+            #35652d,
+            #183c20 35%,
+            #0a2413 70%,
+            #031008 100%
+        );
+
+    transform:
+        rotateX(58deg)
+        translateZ(80px);
+
+    box-shadow:
+        0 -20px 70px rgba(72,120,50,.16);
+}
+
+/* =========================================================
+   CAMINO
+========================================================= */
+
+.path{
+    position:absolute;
+
+    width:330px;
+    height:70%;
+
+    left:50%;
+    bottom:-35%;
+
+    transform:
+        translateX(-50%)
+        rotateX(57deg);
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(148,119,74,.24) 25%,
+            rgba(174,144,91,.35) 50%,
+            rgba(148,119,74,.24) 75%,
+            transparent
+        );
+
+    filter:blur(3px);
+
+    border-radius:50%;
+}
+
+/* =========================================================
+   JARDÍN 3D
+========================================================= */
+
+.garden{
+    position:absolute;
+    inset:0;
+    transform-style:preserve-3d;
+}
+
+/* =========================================================
+   ROSA
+========================================================= */
+
+.rose{
+    position:absolute;
+
+    width:210px;
+    height:500px;
+
+    bottom:15%;
+    left:50%;
+
+    transform:
+        translateX(-50%)
+        translateZ(100px);
+
+    transform-style:preserve-3d;
+}
+
+.rose.small{
+    transform:
+        translateX(-50%)
+        translateZ(20px)
+        scale(.68);
+}
+
+.rose.tiny{
+    transform:
+        translateX(-50%)
+        translateZ(-50px)
+        scale(.46);
+}
+
+/* =========================================================
+   TALLO
+========================================================= */
+
+.stem{
+    position:absolute;
+
+    width:17px;
+    height:0;
+
+    left:50%;
+    bottom:0;
+
+    transform:
+        translateX(-50%)
+        rotate(-2deg);
+
+    transform-origin:bottom;
+
+    border-radius:100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #102d14,
+            #477c31 28%,
+            #7da648 50%,
+            #35652a 72%,
+            #0c2611
+        );
+
+    box-shadow:
+        5px 0 15px rgba(0,0,0,.3),
+        inset 2px 0 5px rgba(230,255,160,.15);
+
+    animation:growStem 3s cubic-bezier(.2,.8,.2,1) forwards;
+}
+
+@keyframes growStem{
+    to{
+        height:370px;
+    }
+}
+
+/* =========================================================
+   HOJAS
+========================================================= */
+
+.leaf{
+    position:absolute;
+
+    width:90px;
+    height:43px;
+
+    opacity:0;
+
+    border-radius:
+        100% 0
+        100% 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            #a5c950,
+            #4d8833 45%,
+            #174b24 100%
+        );
+
+    box-shadow:
+        inset 5px 5px 8px rgba(230,255,160,.16),
+        inset -8px -7px 12px rgba(0,0,0,.22),
+        4px 7px 10px rgba(0,0,0,.22);
+
+    transform-origin:0 50%;
+}
+
+.leaf::after{
+    content:"";
+
+    position:absolute;
+
+    left:9%;
+    top:50%;
+
+    width:80%;
+    height:2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(230,255,150,.6),
+            transparent
+        );
+
+    transform:rotate(-8deg);
+}
+
+.leaf.left{
+    left:calc(50% - 5px);
+    bottom:110px;
+    transform:rotate(-30deg) scale(0);
+    animation:leafLeft 1s 2.9s cubic-bezier(.2,.9,.2,1) forwards;
+}
+
+.leaf.right{
+    left:calc(50% + 5px);
+    bottom:190px;
+    transform:rotate(28deg) scale(0);
+    animation:leafRight 1s 3.3s cubic-bezier(.2,.9,.2,1) forwards;
+}
+
+.leaf.left2{
+    left:calc(50% - 4px);
+    bottom:270px;
+    transform:rotate(-34deg) scale(0);
+    animation:leafLeft 1s 3.7s cubic-bezier(.2,.9,.2,1) forwards;
+}
+
+@keyframes leafLeft{
+    to{
+        opacity:1;
+        transform:rotate(-30deg) scale(1);
+    }
+}
+
+@keyframes leafRight{
+    to{
+        opacity:1;
+        transform:rotate(28deg) scale(1);
+    }
+}
+
+/* =========================================================
+   FLOR
+========================================================= */
+
+.flower{
+    position:absolute;
+
+    left:50%;
+    top:3%;
+
+    width:180px;
+    height:180px;
+
+    transform:
+        translateX(-50%)
+        scale(.05);
+
+    transform-style:preserve-3d;
+
+    opacity:0;
+
+    animation:
+        bloom 3.8s 4s cubic-bezier(.18,.9,.2,1) forwards,
+        sway 6s 8s ease-in-out infinite;
+}
+
+@keyframes bloom{
+    0%{
+        opacity:0;
+        transform:translateX(-50%) scale(.05) rotate(-15deg);
+    }
+
+    35%{
+        opacity:1;
+        transform:translateX(-50%) scale(.45) rotate(8deg);
+    }
+
+    70%{
+        transform:translateX(-50%) scale(1.08) rotate(-3deg);
+    }
+
+    100%{
+        opacity:1;
+        transform:translateX(-50%) scale(1) rotate(0);
+    }
+}
+
+@keyframes sway{
+    0%,100%{
+        rotate:0deg;
+    }
+    50%{
+        rotate:2deg;
+    }
+}
+
+/* =========================================================
+   PÉTALOS
+========================================================= */
+
+.petal{
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    width:85px;
+    height:115px;
+
+    transform-origin:50% 90%;
+
+    border-radius:
+        65% 65%
+        45% 45%;
+
+    background:
+        radial-gradient(
+            ellipse at 32% 20%,
+            #fffbd1 0%,
+            #fff06b 22%,
+            #ffd12b 52%,
+            #d89000 82%,
+            #8e5000 100%
+        );
+
+    box-shadow:
+        inset 7px 8px 12px rgba(255,255,220,.3),
+        inset -8px -10px 16px rgba(100,50,0,.22),
+        0 8px 14px rgba(0,0,0,.28);
+
+    backface-visibility:hidden;
+}
+
+.p1{transform:translate(-50%,-80%) rotate(0deg) translateZ(8px)}
+.p2{transform:translate(-50%,-80%) rotate(52deg) translateZ(10px)}
+.p3{transform:translate(-50%,-80%) rotate(104deg) translateZ(12px)}
+.p4{transform:translate(-50%,-80%) rotate(156deg) translateZ(13px)}
+.p5{transform:translate(-50%,-80%) rotate(208deg) translateZ(12px)}
+.p6{transform:translate(-50%,-80%) rotate(260deg) translateZ(10px)}
+.p7{transform:translate(-50%,-80%) rotate(312deg) translateZ(9px)}
+
+.inner{
+    width:65px;
+    height:94px;
+
+    background:
+        radial-gradient(
+            ellipse at 35% 20%,
+            #fffedb,
+            #ffe85a 38%,
+            #e8ad12 78%,
+            #925500
+        );
+}
+
+.i1{transform:translate(-50%,-78%) rotate(35deg) translateZ(35px)}
+.i2{transform:translate(-50%,-78%) rotate(125deg) translateZ(38px)}
+.i3{transform:translate(-50%,-78%) rotate(215deg) translateZ(40px)}
+.i4{transform:translate(-50%,-78%) rotate(305deg) translateZ(38px)}
+
+.center{
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    width:42px;
+    height:42px;
+
+    transform:
+        translate(-50%,-50%)
+        translateZ(60px);
+
+    border-radius:50%;
+
+    background:
+        radial-gradient(
+            circle at 30% 25%,
+            #fff6a5,
+            #e7a90c 50%,
+            #804700
+        );
+
+    box-shadow:
+        0 0 18px rgba(255,215,50,.35);
+}
+
+/* =========================================================
+   ROSAS SECUNDARIAS
+========================================================= */
+
+.rose1{
+    left:17%;
+    bottom:17%;
+}
+
+.rose2{
+    left:31%;
+    bottom:12%;
+}
+
+.rose3{
+    left:70%;
+    bottom:14%;
+}
+
+.rose4{
+    left:84%;
+    bottom:18%;
+}
+
+.rose5{
+    left:58%;
+    bottom:9%;
+}
+
+/* =========================================================
+   HIERBA
+========================================================= */
+
+.grass{
+    position:absolute;
+
+    bottom:10%;
+    width:100%;
+    height:170px;
+
+    pointer-events:none;
+}
+
+.blade{
+    position:absolute;
+
+    bottom:0;
+
+    width:3px;
+    height:30px;
+
+    background:
+        linear-gradient(
+            to top,
+            #0b3216,
+            #57913a
+        );
+
+    transform-origin:bottom;
+
+    border-radius:100%;
+
+    animation:grassWave 3s ease-in-out infinite alternate;
+}
+
+@keyframes grassWave{
+    from{
+        transform:rotate(-4deg);
+    }
+    to{
+        transform:rotate(7deg);
+    }
+}
+
+/* =========================================================
+   LUCIÉRNAGAS
+========================================================= */
+
+.firefly{
+    position:absolute;
+
+    width:5px;
+    height:5px;
+
+    border-radius:50%;
+
+    background:#fff3a0;
+
+    box-shadow:
+        0 0 7px #ffe95b,
+        0 0 20px rgba(255,221,70,.7);
+
+    animation:
+        fireflyMove
+        7s ease-in-out infinite;
+}
+
+.firefly:nth-child(1){
+    left:12%;
+    bottom:38%;
+    animation-delay:0s;
+}
+
+.firefly:nth-child(2){
+    left:23%;
+    bottom:48%;
+    animation-delay:1.2s;
+}
+
+.firefly:nth-child(3){
+    left:39%;
+    bottom:34%;
+    animation-delay:2s;
+}
+
+.firefly:nth-child(4){
+    left:64%;
+    bottom:43%;
+    animation-delay:.7s;
+}
+
+.firefly:nth-child(5){
+    left:76%;
+    bottom:35%;
+    animation-delay:3s;
+}
+
+.firefly:nth-child(6){
+    left:88%;
+    bottom:46%;
+    animation-delay:1.7s;
+}
+
+.firefly:nth-child(7){
+    left:52%;
+    bottom:55%;
+    animation-delay:2.7s;
+}
+
+@keyframes fireflyMove{
+    0%,100%{
+        opacity:.15;
+        transform:translate(0,0);
+    }
+
+    25%{
+        opacity:1;
+    }
+
+    50%{
+        transform:translate(35px,-45px);
+        opacity:.75;
+    }
+
+    75%{
+        opacity:1;
+    }
+}
+
+/* =========================================================
+   PÉTALOS QUE CAEN
+========================================================= */
+
+.falling-petal{
+    position:absolute;
+
+    width:12px;
+    height:18px;
+
+    border-radius:
+        80% 20%
+        80% 20%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff17a,
+            #e9a500
+        );
+
+    opacity:0;
+
+    animation:
+        falling 8s linear infinite;
+}
+
+.falling-petal:nth-child(1){
+    left:30%;
+    top:10%;
+    animation-delay:5s;
+}
+
+.falling-petal:nth-child(2){
+    left:55%;
+    top:5%;
+    animation-delay:8s;
+}
+
+.falling-petal:nth-child(3){
+    left:75%;
+    top:15%;
+    animation-delay:11s;
+}
+
+@keyframes falling{
+    0%{
+        opacity:0;
+        transform:
+            translateY(0)
+            rotate(0);
+    }
+
+    15%{
+        opacity:.8;
+    }
+
+    100%{
+        opacity:0;
+        transform:
+            translate(
+                80px,
+                650px
+            )
+            rotate(480deg);
+    }
+}
+
+/* =========================================================
+   VIÑETA
+========================================================= */
+
+.vignette{
+    position:absolute;
+    inset:0;
+
+    pointer-events:none;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            transparent 42%,
+            rgba(0,0,0,.25) 75%,
+            rgba(0,0,0,.7) 100%
+        );
+
+    z-index:20;
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:700px){
+
+    .moon{
+        right:8%;
+        top:8%;
+        width:75px;
+        height:75px;
+    }
+
+    .mountains{
+        transform:translateZ(-100px) scale(1.5);
+    }
+
+    .rose1{left:5%}
+    .rose2{left:22%}
+    .rose3{left:76%}
+    .rose4{left:94%}
+    .rose5{left:55%}
+
+    .rose{
+        transform:
+            translateX(-50%)
+            translateZ(80px)
+            scale(.75);
+    }
+
+    .rose.small{
+        transform:
+            translateX(-50%)
+            translateZ(20px)
+            scale(.5);
+    }
+}
+
+</style>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<audio id="backgroundAudio" src="audio.mp3.mp3" autoplay loop preload="auto"></audio>
+
+<div class="scene">
+
+    <div class="sun" aria-label="Sol" role="img"></div>
+
+    <div class="skyGlow"></div>
+
+    <div class="moon"></div>
+
+    <!-- ESTRELLAS -->
+    <div class="stars">
+        <span class="star"></span>
+        <span class="star"></span>
+        <span class="star"></span>
+        <span class="star"></span>
+        <span class="star"></span>
+        <span class="star"></span>
+        <span class="star"></span>
+        <span class="star"></span>
+        <span class="star"></span>
+        <span class="star"></span>
+        <span class="star"></span>
+        <span class="star"></span>
+    </div>
+
+    <!-- MONTAÑAS -->
+    <div class="mountains">
+        <div class="mountain m1"></div>
+        <div class="mountain m2"></div>
+        <div class="mountain m3"></div>
+        <div class="mountain m4"></div>
+    </div>
+
+    <div class="fog"></div>
+
+    <!-- TERRENO -->
+    <div class="ground"></div>
+    <div class="path"></div>
+
+    <div class="garden">
+
+        <!-- ROSA CENTRAL -->
+        <div class="rose roseMain">
+
+            <div class="stem"></div>
+
+            <div class="leaf left"></div>
+            <div class="leaf right"></div>
+            <div class="leaf left2"></div>
+
+            <div class="flower">
+
+                <div class="petal p1"></div>
+                <div class="petal p2"></div>
+                <div class="petal p3"></div>
+                <div class="petal p4"></div>
+                <div class="petal p5"></div>
+                <div class="petal p6"></div>
+                <div class="petal p7"></div>
+
+                <div class="petal inner i1"></div>
+                <div class="petal inner i2"></div>
+                <div class="petal inner i3"></div>
+                <div class="petal inner i4"></div>
+
+                <div class="center"></div>
+
+            </div>
+
+        </div>
+
+        <!-- ROSAS DELANTERAS -->
+        <div class="rose small rose1">
+            <div class="stem"></div>
+            <div class="leaf left"></div>
+            <div class="leaf right"></div>
+            <div class="leaf left2"></div>
+
+            <div class="flower">
+                <div class="petal p1"></div>
+                <div class="petal p2"></div>
+                <div class="petal p3"></div>
+                <div class="petal p4"></div>
+                <div class="petal p5"></div>
+                <div class="petal p6"></div>
+                <div class="petal p7"></div>
+                <div class="petal inner i1"></div>
+                <div class="petal inner i2"></div>
+                <div class="petal inner i3"></div>
+                <div class="petal inner i4"></div>
+                <div class="center"></div>
+            </div>
+        </div>
+
+        <div class="rose small rose2">
+            <div class="stem"></div>
+            <div class="leaf left"></div>
+            <div class="leaf right"></div>
+            <div class="leaf left2"></div>
+
+            <div class="flower">
+                <div class="petal p1"></div>
+                <div class="petal p2"></div>
+                <div class="petal p3"></div>
+                <div class="petal p4"></div>
+                <div class="petal p5"></div>
+                <div class="petal p6"></div>
+                <div class="petal p7"></div>
+                <div class="petal inner i1"></div>
+                <div class="petal inner i2"></div>
+                <div class="petal inner i3"></div>
+                <div class="petal inner i4"></div>
+                <div class="center"></div>
+            </div>
+        </div>
+
+        <div class="rose small rose3">
+            <div class="stem"></div>
+            <div class="leaf left"></div>
+            <div class="leaf right"></div>
+            <div class="leaf left2"></div>
+
+            <div class="flower">
+                <div class="petal p1"></div>
+                <div class="petal p2"></div>
+                <div class="petal p3"></div>
+                <div class="petal p4"></div>
+                <div class="petal p5"></div>
+                <div class="petal p6"></div>
+                <div class="petal p7"></div>
+                <div class="petal inner i1"></div>
+                <div class="petal inner i2"></div>
+                <div class="petal inner i3"></div>
+                <div class="petal inner i4"></div>
+                <div class="center"></div>
+            </div>
+        </div>
+
+        <div class="rose small rose4">
+            <div class="stem"></div>
+            <div class="leaf left"></div>
+            <div class="leaf right"></div>
+            <div class="leaf left2"></div>
+
+            <div class="flower">
+                <div class="petal p1"></div>
+                <div class="petal p2"></div>
+                <div class="petal p3"></div>
+                <div class="petal p4"></div>
+                <div class="petal p5"></div>
+                <div class="petal p6"></div>
+                <div class="petal p7"></div>
+                <div class="petal inner i1"></div>
+                <div class="petal inner i2"></div>
+                <div class="petal inner i3"></div>
+                <div class="petal inner i4"></div>
+                <div class="center"></div>
+            </div>
+        </div>
+
+        <div class="rose tiny rose5">
+            <div class="stem"></div>
+            <div class="leaf left"></div>
+            <div class="leaf right"></div>
+            <div class="leaf left2"></div>
+
+            <div class="flower">
+                <div class="petal p1"></div>
+                <div class="petal p2"></div>
+                <div class="petal p3"></div>
+                <div class="petal p4"></div>
+                <div class="petal p5"></div>
+                <div class="petal p6"></div>
+                <div class="petal p7"></div>
+                <div class="petal inner i1"></div>
+                <div class="petal inner i2"></div>
+                <div class="petal inner i3"></div>
+                <div class="petal inner i4"></div>
+                <div class="center"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- HIERBA -->
+    <div class="grass" id="grass"></div>
+
+    <!-- LUCIÉRNAGAS -->
+    <span class="firefly"></span>
+    <span class="firefly"></span>
+    <span class="firefly"></span>
+    <span class="firefly"></span>
+    <span class="firefly"></span>
+    <span class="firefly"></span>
+    <span class="firefly"></span>
+
+    <!-- PÉTALOS -->
+    <span class="falling-petal"></span>
+    <span class="falling-petal"></span>
+    <span class="falling-petal"></span>
+
+    <div class="vignette"></div>
+
+</div>
+
+<script>
+
+/* =========================================================
+   CREAR HIERBA
+========================================================= */
+
+const grass = document.getElementById("grass");
+
+for(let i=0;i<180;i++){
+
+    const blade = document.createElement("span");
+
+    blade.className = "blade";
+
+    blade.style.left =
+        Math.random()*100 + "%";
+
+    blade.style.height =
+        (18 + Math.random()*45) + "px";
+
+    blade.style.opacity =
+        .35 + Math.random()*.65;
+
+    blade.style.animationDelay =
+        Math.random()*3 + "s";
+
+    blade.style.animationDuration =
+        (2 + Math.random()*2) + "s";
+
+    grass.appendChild(blade);
+}
+
+/* =========================================================
+   MOVIMIENTO 3D CON EL RATÓN
+========================================================= */
+
+const scene = document.querySelector(".scene");
+
+document.addEventListener("mousemove",(e)=>{
+
+    const x =
+        (e.clientX / window.innerWidth - .5);
+
+    const y =
+        (e.clientY / window.innerHeight - .5);
+
+    const garden =
+        document.querySelector(".garden");
+
+    if(garden){
+
+        garden.style.transform =
+            `rotateY(${x*5}deg) rotateX(${y*-3}deg)`;
+    }
+
+    const mountains =
+        document.querySelector(".mountains");
+
+    if(mountains){
+
+        mountains.style.marginLeft =
+            `${x*-18}px`;
+    }
+
+    const moon =
+        document.querySelector(".moon");
+
+    if(moon){
+
+        moon.style.marginLeft =
+            `${x*-8}px`;
+    }
+
+});
+
+/* =========================================================
+   TOQUE / CLICK = PEQUEÑA LUZ
+========================================================= */
+
+const backgroundAudio = document.getElementById("backgroundAudio");
+
+document.addEventListener("pointerdown", () => {
+    backgroundAudio.play().catch(() => {});
+}, { once: true });
+
+document.addEventListener("click",(e)=>{
+
+    const light =
+        document.createElement("span");
+
+    light.style.position="fixed";
+    light.style.left=e.clientX+"px";
+    light.style.top=e.clientY+"px";
+    light.style.width="8px";
+    light.style.height="8px";
+    light.style.borderRadius="50%";
+    light.style.background="#fff4a0";
+    light.style.boxShadow=
+        "0 0 15px #ffe85c,0 0 35px #ffd52e";
+    light.style.pointerEvents="none";
+    light.style.zIndex="50";
+
+    document.body.appendChild(light);
+
+    light.animate(
+        [
+            {
+                transform:"scale(.2)",
+                opacity:0
+            },
+            {
+                transform:"scale(2)",
+                opacity:1
+            },
+            {
+                transform:"scale(.3) translateY(-60px)",
+                opacity:0
+            }
+        ],
+        {
+            duration:1200,
+            easing:"ease-out"
+        }
+    );
+
+    setTimeout(()=>{
+        light.remove();
+    },1200);
+
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#08050f"
+    >
+
+    <meta
+        name="description"
+        content="Iru Codex — Catálogo de proyectos y códigos HTML."
+    >
+
+    <title>Iru Codex | Catálogo</title>
+
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         FONDO
+    ====================================================== -->
+
+    <div class="background">
+
+        <div class="background-glow glow-one"></div>
+        <div class="background-glow glow-two"></div>
+        <div class="background-glow glow-three"></div>
+
+        <div class="grid-background"></div>
+
+        <div id="particles"></div>
+
+    </div>
+
+
+    <!-- =====================================================
+         CONTENEDOR PRINCIPAL
+    ====================================================== -->
+
+    <main class="site-container">
+
+
+        <!-- =================================================
+             HEADER
+        ================================================== -->
+
+        <header class="top-header">
+
+            <button
+                class="menu-button"
+                id="menuButton"
+                type="button"
+                aria-label="Abrir menú"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+
+            <div class="brand">
+
+                <h1>
+                    <span class="brand-symbol">✦</span>
+                    IRU<span>CODEX</span>
+                    <span class="brand-symbol">✦</span>
+                </h1>
+
+                <div class="profession">
+                    <span class="profession-icon">▣</span>
+                    INGENIERO DE SOFTWARE
+                </div>
+
+            </div>
+
+
+            <div class="header-actions">
+
+                <button
+                    class="header-button mode-button"
+                    id="modeButton"
+                    type="button"
+                >
+                    <span id="modeIcon">☾</span>
+                    <span id="modeText">MODO</span>
+                </button>
+
+
+                <button
+                    class="header-button whatsapp-button"
+                    id="whatsappButton"
+                    type="button"
+                >
+                    <span>◉</span>
+                    CANAL DE WHATSAPP
+                </button>
+
+            </div>
+
+        </header>
+
+
+
+        <!-- =================================================
+             PRESENTACIÓN
+        ================================================== -->
+
+        <section class="intro-card">
+
+            <div class="intro-content">
+
+                <div class="intro-label">
+                    DEVELOPER
+                </div>
+
+
+                <h2 class="intro-title">
+                    CODE.
+                    <span>CREATE.</span>
+                </h2>
+
+
+                <p class="intro-description">
+                    Explora códigos desarrollados con HTML
+                    modernos y creativos con animaciones,
+                    efectos visuales y diseños interactivos.
+                </p>
+
+
+                <div class="catalog-badge">
+
+                    <span class="badge-icon">⚡</span>
+
+                    <span>
+                        IRU CODEX
+                        <strong>· CATÁLOGO</strong>
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="intro-decoration">
+
+                <div class="code-orbit orbit-one"></div>
+                <div class="code-orbit orbit-two"></div>
+
+                <span class="code-symbol symbol-one">
+                    &lt;/&gt;
+                </span>
+
+                <span class="code-symbol symbol-two">
+                    {}
+                </span>
+
+                <span class="code-symbol symbol-three">
+                    ✦
+                </span>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             CATEGORÍAS
+        ================================================== -->
+
+        <section class="categories-section">
+
+            <div class="section-heading">
+
+                <span class="heading-line"></span>
+
+                <h2>
+                    CATEGORÍAS
+                </h2>
+
+                <span class="heading-line"></span>
+
+            </div>
+
+
+            <div
+                class="categories"
+                id="categories"
+            >
+
+                <button
+                    class="category active"
+                    data-category="todos"
+                    type="button"
+                >
+                    TODOS
+                </button>
+
+
+                <button
+                    class="category"
+                    data-category="gratis"
+                    type="button"
+                >
+                    GRATIS
+                </button>
+
+
+                <button
+                    class="category"
+                    data-category="premium"
+                    type="button"
+                >
+                    PREMIUM
+                </button>
+
+
+                <button
+                    class="category"
+                    data-category="flores"
+                    type="button"
+                >
+                    FLORES
+                </button>
+
+
+                <button
+                    class="category"
+                    data-category="cumpleanos"
+                    type="button"
+                >
+                    CUMPLEAÑOS
+                </button>
+
+
+                <button
+                    class="category"
+                    data-category="corazones"
+                    type="button"
+                >
+                    CORAZONES
+                </button>
+
+
+                <button
+                    class="category"
+                    data-category="cartas"
+                    type="button"
+                >
+                    CARTAS
+                </button>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             CATÁLOGO
+        ================================================== -->
+
+        <section class="catalog-section">
+
+
+            <div class="catalog-header">
+
+                <div class="catalog-title">
+
+                    <span class="catalog-icon">
+                        ▣
+                    </span>
+
+                    <h2>
+                        Catálogos
+                    </h2>
+
+                    <span class="catalog-colon">
+                        :
+                    </span>
+
+                </div>
+
+
+                <div
+                    class="catalog-status"
+                    id="catalogStatus"
+                >
+                    Mostrando todo el catálogo
+                </div>
+
+            </div>
+
+
+            <div class="public-catalogs" id="publicCatalogsSection" hidden>
+                <h3 class="catalog-subheading">Catálogos publicados</h3>
+                <div class="catalog-grid" id="publicCatalogGrid"></div>
+            </div>
+
+            <h3 class="catalog-subheading">Proyectos</h3>
+
+
+            <!--
+                AQUÍ APARECERÁN LOS HTML
+                QUE PUBLIQUE EL ADMINISTRADOR
+            -->
+
+            <div
+                class="catalog-grid"
+                id="catalogGrid"
+            >
+
+                <!--
+                Ejemplo temporal:
+
+                <article
+                    class="catalog-card"
+                    data-category="flores"
+                >
+                    ...
+                </article>
+                -->
+
+            </div>
+
+
+
+            <!-- =================================================
+                 ESTADO VACÍO
+            ================================================== -->
+
+            <div
+                class="empty-catalog"
+                id="emptyCatalog"
+            >
+
+                <div class="empty-icon">
+                    ✦
+                </div>
+
+                <h3>
+                    Próximamente
+                </h3>
+
+                <p>
+                    Los nuevos proyectos de Iru Codex
+                    aparecerán aquí.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+
+        <footer class="site-footer">
+
+            <div class="footer-line"></div>
+
+            <p>
+                Diseñado y desarrollado por
+                <strong>Iru Codex</strong>
+            </p>
+
+            <span>
+                © 2026 · Todos los derechos reservados
+            </span>
+
+        </footer>
+
+    </main>
+
+
+    <dialog
+        class="project-preview-dialog"
+        id="projectPreviewDialog"
+        aria-labelledby="projectPreviewTitle"
+    >
+        <div class="project-preview-toolbar">
+            <h2 id="projectPreviewTitle">Vista previa del proyecto</h2>
+            <div class="project-preview-actions">
+                <a
+                    id="projectPreviewOpenLink"
+                    class="project-preview-open-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    hidden
+                >Abrir afuera</a>
+                <button
+                    type="button"
+                    id="projectPreviewDownload"
+                    class="project-preview-download"
+                >Descargar</button>
+                <button
+                    type="button"
+                    id="projectPreviewClose"
+                    aria-label="Cerrar vista previa"
+                >
+                    ×
+                </button>
+            </div>
+        </div>
+        <iframe
+            id="projectPreviewFrame"
+            title="Vista previa del proyecto"
+            sandbox="allow-scripts allow-forms allow-modals"
+        ></iframe>
+    </dialog>
+
+
+
+    <!-- =====================================================
+         MENÚ LATERAL
+    ====================================================== -->
+
+    <div
+        class="menu-overlay"
+        id="menuOverlay"
+    >
+
+        <aside class="side-menu">
+
+            <button
+                class="close-menu"
+                id="closeMenu"
+                type="button"
+            >
+                ×
+            </button>
+
+
+            <div class="menu-brand">
+
+                <span>✦</span>
+
+                <h2>
+                    IRUCODEX
+                </h2>
+
+                <span>✦</span>
+
+            </div>
+
+
+            <div class="menu-divider"></div>
+
+
+            <nav class="menu-navigation">
+
+                <a href="../index.html">
+                    <span>⌂</span>
+                    Inicio
+                </a>
+
+                <a href="#categorias">
+                    <span>◈</span>
+                    Categorías
+                </a>
+
+                <a href="#catalogos">
+                    <span>▣</span>
+                    Catálogos
+                </a>
+
+            </nav>
+
+
+            <div class="menu-footer">
+
+                <span>
+                    IRU CODEX
+                </span>
+
+                <small>
+                    Developer · 2026
+                </small>
+
+            </div>
+
+        </aside>
+
+    </div>
+
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

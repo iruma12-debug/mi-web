@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iru Codex | Personalizados</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+    width:100%;
+    min-height:100%;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#030712;
+    color:white;
+    overflow-x:hidden;
+}
+
+body{
+    position:relative;
+}
+
+/* FONDO */
+
+.background{
+    position:fixed;
+    inset:0;
+    z-index:-3;
+    background:
+        radial-gradient(circle at 50% 0%, rgba(0,119,255,.18), transparent 35%),
+        radial-gradient(circle at 10% 80%, rgba(0,81,255,.10), transparent 30%),
+        #030712;
+}
+
+.glow{
+    position:fixed;
+    width:260px;
+    height:260px;
+    border-radius:50%;
+    filter:blur(100px);
+    opacity:.18;
+    z-index:-2;
+}
+
+.glow.one{
+    background:#0077ff;
+    top:-100px;
+    left:-100px;
+}
+
+.glow.two{
+    background:#004cff;
+    bottom:-120px;
+    right:-100px;
+}
+
+/* CHISPAS */
+
+.spark{
+    position:fixed;
+    width:3px;
+    height:3px;
+    background:#45aaff;
+    border-radius:50%;
+    box-shadow:
+        0 0 6px #008cff,
+        0 0 14px #0077ff;
+    animation:floatSpark linear infinite;
+    z-index:-1;
+}
+
+@keyframes floatSpark{
+    0%{
+        transform:translateY(110vh) scale(.3);
+        opacity:0;
+    }
+
+    15%{
+        opacity:1;
+    }
+
+    50%{
+        transform:translateY(50vh) translateX(20px) scale(1);
+        opacity:.9;
+    }
+
+    100%{
+        transform:translateY(-10vh) translateX(-25px) scale(.2);
+        opacity:0;
+    }
+}
+
+.spark:nth-child(1){left:8%;animation-duration:7s;animation-delay:0s}
+.spark:nth-child(2){left:17%;animation-duration:10s;animation-delay:2s}
+.spark:nth-child(3){left:28%;animation-duration:8s;animation-delay:1s}
+.spark:nth-child(4){left:39%;animation-duration:12s;animation-delay:4s}
+.spark:nth-child(5){left:48%;animation-duration:9s;animation-delay:1s}
+.spark:nth-child(6){left:59%;animation-duration:11s;animation-delay:3s}
+.spark:nth-child(7){left:69%;animation-duration:8s;animation-delay:2s}
+.spark:nth-child(8){left:78%;animation-duration:13s;animation-delay:5s}
+.spark:nth-child(9){left:88%;animation-duration:9s;animation-delay:1s}
+.spark:nth-child(10){left:94%;animation-duration:11s;animation-delay:4s}
+.spark:nth-child(11){left:23%;animation-duration:14s;animation-delay:6s}
+.spark:nth-child(12){left:73%;animation-duration:10s;animation-delay:7s}
+.spark:nth-child(13){left:52%;animation-duration:15s;animation-delay:2s}
+.spark:nth-child(14){left:33%;animation-duration:9s;animation-delay:5s}
+.spark:nth-child(15){left:82%;animation-duration:12s;animation-delay:1s}
+
+/* CONTENEDOR */
+
+.container{
+    width:100%;
+    max-width:520px;
+    margin:auto;
+    padding:25px 17px 45px;
+}
+
+/* HEADER */
+
+.header{
+    text-align:center;
+    padding:12px 5px 28px;
+}
+
+.logo{
+    width:58px;
+    height:58px;
+    margin:auto;
+    border-radius:18px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:25px;
+    font-weight:900;
+    background:linear-gradient(145deg,#0b172b,#06101f);
+    border:1px solid rgba(0,153,255,.45);
+    box-shadow:
+        0 0 25px rgba(0,119,255,.18),
+        inset 0 0 20px rgba(0,119,255,.08);
+}
+
+.header h1{
+    margin-top:17px;
+    font-size:29px;
+    letter-spacing:-1px;
+}
+
+.header h1 span{
+    color:#168cff;
+}
+
+.header p{
+    margin-top:9px;
+    color:#8291a7;
+    font-size:14px;
+    line-height:1.5;
+}
+
+/* BADGE */
+
+.badge{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    margin-top:16px;
+    padding:7px 12px;
+    border-radius:30px;
+    background:rgba(0,119,255,.08);
+    border:1px solid rgba(0,145,255,.2);
+    color:#62b9ff;
+    font-size:11px;
+    font-weight:bold;
+}
+
+.status-dot{
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:#19a8ff;
+    box-shadow:0 0 9px #008cff;
+}
+
+/* TITULO */
+
+.section-title{
+    margin:8px 2px 14px;
+}
+
+.section-title h2{
+    font-size:18px;
+}
+
+.section-title p{
+    margin-top:4px;
+    color:#66758b;
+    font-size:12px;
+}
+
+/* CARDS */
+
+.projects{
+    display:flex;
+    flex-direction:column;
+    gap:13px;
+}
+
+.project{
+    position:relative;
+    overflow:hidden;
+    padding:17px;
+    border-radius:19px;
+    border:1px solid rgba(112,142,180,.12);
+    background:
+        linear-gradient(145deg,rgba(15,26,45,.94),rgba(5,12,23,.94));
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.25);
+    transition:.25s ease;
+}
+
+.project::before{
+    content:"";
+    position:absolute;
+    width:100px;
+    height:100px;
+    right:-45px;
+    top:-45px;
+    background:#007bff;
+    opacity:.12;
+    filter:blur(35px);
+    border-radius:50%;
+}
+
+.project:active{
+    transform:scale(.98);
+    border-color:rgba(0,145,255,.4);
+}
+
+.project-top{
+    display:flex;
+    align-items:center;
+    gap:13px;
+}
+
+.project-icon{
+    width:48px;
+    height:48px;
+    flex-shrink:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:14px;
+    background:linear-gradient(145deg,#09294a,#061426);
+    border:1px solid rgba(0,145,255,.25);
+    color:#36aaff;
+    font-size:21px;
+    box-shadow:0 0 20px rgba(0,119,255,.1);
+}
+
+.project-info{
+    flex:1;
+}
+
+.project-info h3{
+    font-size:15px;
+    margin-bottom:5px;
+}
+
+.project-info p{
+    font-size:11px;
+    color:#75849a;
+    line-height:1.4;
+}
+
+.price{
+    color:#45adff;
+    font-weight:bold;
+    font-size:13px;
+}
+
+.project-bottom{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-top:16px;
+}
+
+.tags{
+    display:flex;
+    gap:5px;
+    flex-wrap:wrap;
+}
+
+.tag{
+    padding:5px 8px;
+    border-radius:7px;
+    background:rgba(255,255,255,.035);
+    border:1px solid rgba(255,255,255,.05);
+    color:#8291a6;
+    font-size:9px;
+}
+
+.button{
+    border:0;
+    color:white;
+    padding:9px 13px;
+    border-radius:9px;
+    background:linear-gradient(135deg,#087eff,#0055c9);
+    font-size:11px;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:0 5px 18px rgba(0,110,255,.2);
+}
+
+/* DESTACADO */
+
+.featured{
+    border-color:rgba(0,145,255,.28);
+    background:
+        linear-gradient(145deg,rgba(8,30,57,.95),rgba(4,13,26,.95));
+}
+
+.featured-label{
+    position:absolute;
+    top:12px;
+    right:12px;
+    padding:5px 8px;
+    border-radius:7px;
+    background:rgba(0,132,255,.12);
+    color:#48adff;
+    border:1px solid rgba(0,145,255,.18);
+    font-size:8px;
+    font-weight:bold;
+}
+
+/* FOOTER */
+
+.footer{
+    text-align:center;
+    margin-top:30px;
+    padding-top:20px;
+    border-top:1px solid rgba(255,255,255,.05);
+}
+
+.footer strong{
+    font-size:12px;
+}
+
+.footer p{
+    color:#536177;
+    font-size:10px;
+    margin-top:7px;
+}
+
+/* MODAL */
+
+.modal{
+    position:fixed;
+    inset:0;
+    display:none;
+    align-items:flex-end;
+    justify-content:center;
+    background:rgba(0,0,0,.7);
+    backdrop-filter:blur(8px);
+    z-index:20;
+}
+
+.modal.active{
+    display:flex;
+}
+
+.modal-box{
+    width:100%;
+    max-width:520px;
+    padding:24px 19px 30px;
+    border-radius:25px 25px 0 0;
+    background:#07101e;
+    border:1px solid rgba(0,145,255,.2);
+    box-shadow:0 -20px 70px rgba(0,0,0,.5);
+    animation:modalIn .3s ease;
+}
+
+@keyframes modalIn{
+    from{
+        transform:translateY(100%);
+        opacity:0;
+    }
+    to{
+        transform:translateY(0);
+        opacity:1;
+    }
+}
+
+.close{
+    float:right;
+    width:32px;
+    height:32px;
+    border:0;
+    border-radius:50%;
+    background:#101b2b;
+    color:#8da0b8;
+    font-size:18px;
+    cursor:pointer;
+}
+
+.modal-box h2{
+    margin-top:5px;
+    font-size:20px;
+}
+
+.modal-box > p{
+    margin-top:8px;
+    color:#728198;
+    font-size:12px;
+    line-height:1.5;
+}
+
+.modal-options{
+    margin-top:20px;
+    display:flex;
+    flex-direction:column;
+    gap:9px;
+}
+
+.option{
+    padding:14px;
+    border-radius:12px;
+    background:#0b1728;
+    border:1px solid rgba(255,255,255,.05);
+    color:#b9c6d7;
+    font-size:12px;
+}
+
+.option span{
+    color:#36aaff;
+    margin-right:6px;
+}
+</style>
+<link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<div class="glow one"></div>
+<div class="glow two"></div>
+
+<!-- CHISPAS -->
+<div class="spark"></div>
+<div class="spark"></div>
+<div class="spark"></div>
+<div class="spark"></div>
+<div class="spark"></div>
+<div class="spark"></div>
+<div class="spark"></div>
+<div class="spark"></div>
+<div class="spark"></div>
+<div class="spark"></div>
+<div class="spark"></div>
+<div class="spark"></div>
+<div class="spark"></div>
+<div class="spark"></div>
+<div class="spark"></div>
+
+<div class="container">
+
+    <header class="header">
+
+        <img class="logo" src="perfil.png.webp" alt="Foto de perfil">
+
+        <h1>Iru <span>Codex</span></h1>
+
+        <p>
+            Crea experiencias digitales únicas<br>
+            con nuestros proyectos personalizados.
+        </p>
+
+        <div class="badge">
+            <div class="status-dot"></div>
+            PROYECTOS PERSONALIZABLES
+        </div>
+
+    </header>
+
+
+    <div class="section-title">
+        <h2>Elige un proyecto</h2>
+        <p>Selecciona una base y comienza a personalizarla.</p>
+    </div>
+
+
+    <div class="projects">
+
+        <!-- PROYECTO 1 -->
+
+        <div class="project featured">
+
+            <div class="featured-label">
+                DESTACADO
+            </div>
+
+            <div class="project-top">
+
+                <div class="project-icon">
+                    ♡
+                </div>
+
+                <div class="project-info">
+
+                    <h3>Dedicatoria Animada</h3>
+
+                    <p>
+                        Una página especial con textos,
+                        animaciones y efectos visuales.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="project-bottom">
+
+                <div class="tags">
+                    <div class="tag">Animación</div>
+                    <div class="tag">Romántico</div>
+                    <div class="tag">HTML</div>
+                </div>
+
+                <button class="button"
+                    onclick="openModal('Dedicatoria Animada')">
+                    Personalizar
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- PROYECTO 2 -->
+
+        <div class="project">
+
+            <div class="project-top">
+
+                <div class="project-icon">
+                    🎂
+                </div>
+
+                <div class="project-info">
+
+                    <h3>Invitación Digital</h3>
+
+                    <p>
+                        Invitaciones modernas para eventos,
+                        cumpleaños y celebraciones.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="project-bottom">
+
+                <div class="tags">
+                    <div class="tag">Eventos</div>
+                    <div class="tag">Diseño</div>
+                    <div class="tag">HTML</div>
+                </div>
+
+                <button class="button"
+                    onclick="openModal('Invitación Digital')">
+                    Personalizar
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- PROYECTO 3 -->
+
+        <div class="project">
+
+            <div class="project-top">
+
+                <div class="project-icon">
+                    ⚡
+                </div>
+
+                <div class="project-info">
+
+                    <h3>Landing Premium</h3>
+
+                    <p>
+                        Página moderna para presentar
+                        un proyecto, producto o servicio.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="project-bottom">
+
+                <div class="tags">
+                    <div class="tag">Premium</div>
+                    <div class="tag">Responsive</div>
+                    <div class="tag">HTML</div>
+                </div>
+
+                <button class="button"
+                    onclick="openModal('Landing Premium')">
+                    Personalizar
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- PROYECTO 4 -->
+
+        <div class="project">
+
+            <div class="project-top">
+
+                <div class="project-icon">
+                    🎁
+                </div>
+
+                <div class="project-info">
+
+                    <h3>Sorpresa Digital</h3>
+
+                    <p>
+                        Una experiencia interactiva para
+                        sorprender a alguien de forma especial.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="project-bottom">
+
+                <div class="tags">
+                    <div class="tag">Interactivo</div>
+                    <div class="tag">Animado</div>
+                    <div class="tag">HTML</div>
+                </div>
+
+                <button class="button"
+                    onclick="openModal('Sorpresa Digital')">
+                    Personalizar
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- PROYECTO 5 -->
+
+        <div class="project">
+
+            <div class="project-top">
+
+                <div class="project-icon">
+                    🚀
+                </div>
+
+                <div class="project-info">
+
+                    <h3>Proyecto Personal</h3>
+
+                    <p>
+                        Diseña una página desde una base
+                        adaptable a tus propias ideas.
+                    </p>
+
+                </div>
+
+            </div>
+
+            <div class="project-bottom">
+
+                <div class="tags">
+                    <div class="tag">Personalizable</div>
+                    <div class="tag">Moderno</div>
+                </div>
+
+                <button class="button"
+                    onclick="openModal('Proyecto Personal')">
+                    Personalizar
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <footer class="footer">
+
+        <strong>IRU CODEX</strong>
+
+        <p>
+            Proyectos digitales personalizados
+        </p>
+
+    </footer>
+
+</div>
+
+
+<!-- MODAL -->
+
+<div class="modal" id="modal">
+
+    <div class="modal-box">
+
+        <button class="close" onclick="closeModal()">×</button>
+
+        <h2 id="modalTitle">Proyecto</h2>
+
+        <p>
+            Personaliza este proyecto y crea una versión
+            adaptada a tu estilo.
+        </p>
+
+        <div class="modal-options">
+
+            <div class="option">
+                <span>✦</span>
+                Cambiar textos
+            </div>
+
+            <div class="option">
+                <span>✦</span>
+                Cambiar colores
+            </div>
+
+            <div class="option">
+                <span>✦</span>
+                Agregar imágenes
+            </div>
+
+            <div class="option">
+                <span>✦</span>
+                Personalizar animaciones
+            </div>
+
+            <button class="button"
+                style="width:100%;margin-top:5px;padding:13px;"
+                onclick="alert('Aquí conectaremos el sistema de compra y personalización.')">
+                Continuar
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>

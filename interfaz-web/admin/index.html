@@ -1,0 +1,1689 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <meta
+    name="description"
+    content="Panel de administración de IruCodex"
+  >
+
+  <title>Admin · IruCodex</title>
+
+  <link rel="stylesheet" href="../estilos.css">
+  <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+
+  <!-- =====================================================
+       FONDO / EFECTOS
+  ====================================================== -->
+
+  <div class="background">
+    <div class="background-glow glow-one"></div>
+    <div class="background-glow glow-two"></div>
+    <div class="background-grid"></div>
+    <div class="particles" id="particles"></div>
+  </div>
+
+
+  <!-- =====================================================
+       PANEL PRINCIPAL
+  ====================================================== -->
+
+  <div class="admin-layout">
+
+    <!-- ===================================================
+         SIDEBAR
+    ==================================================== -->
+
+    <aside class="sidebar" id="sidebar">
+
+      <div class="sidebar-top">
+
+        <a href="../../index.html" class="admin-brand">
+          <span class="brand-symbol">✦</span>
+
+          <div>
+            <strong>IRU CODEX</strong>
+            <small>ADMIN PANEL</small>
+          </div>
+        </a>
+
+
+        <button
+          type="button"
+          class="sidebar-close"
+          id="sidebarClose"
+          aria-label="Cerrar menú"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <!-- Navegación -->
+
+      <nav class="admin-navigation">
+
+        <p class="navigation-title">
+          PRINCIPAL
+        </p>
+
+        <button
+          type="button"
+          class="nav-item active"
+          data-section="dashboard"
+        >
+          <span class="nav-icon">⌂</span>
+          <span>Dashboard</span>
+        </button>
+
+
+        <button
+          type="button"
+          class="nav-item"
+          data-section="catalogos"
+        >
+          <span class="nav-icon">▣</span>
+          <span>Catálogos</span>
+        </button>
+
+
+        <button
+          type="button"
+          class="nav-item"
+          data-section="proyectos"
+        >
+          <span class="nav-icon">◇</span>
+          <span>Proyectos</span>
+        </button>
+
+
+        <button
+          type="button"
+          class="nav-item"
+          data-section="codigos-premium"
+        >
+          <span class="nav-icon">✧</span>
+          <span>Códigos premium</span>
+        </button>
+
+
+        <p class="navigation-title">
+          ESTADÍSTICAS
+        </p>
+
+        <button
+          type="button"
+          class="nav-item"
+          data-section="visitas"
+        >
+          <span class="nav-icon">◉</span>
+          <span>Visitas</span>
+        </button>
+
+
+        <p class="navigation-title">
+          SISTEMA
+        </p>
+
+        <button
+          type="button"
+          class="nav-item"
+          data-section="configuracion"
+        >
+          <span class="nav-icon">⚙</span>
+          <span>Configuración</span>
+        </button>
+
+      </nav>
+
+
+      <!-- Usuario administrador -->
+
+      <div class="admin-profile">
+
+        <div class="admin-avatar">
+          I
+        </div>
+
+        <div class="admin-profile-info">
+          <strong>IruCodex</strong>
+          <span>Administrador</span>
+        </div>
+
+        <button
+          type="button"
+          class="profile-menu"
+          id="profileMenu"
+          aria-label="Opciones de administrador"
+        >
+          ⋮
+        </button>
+
+      </div>
+
+    </aside>
+
+
+    <!-- ===================================================
+         CONTENIDO
+    ==================================================== -->
+
+    <main class="admin-main">
+
+      <!-- HEADER -->
+
+      <header class="admin-header">
+
+        <div class="header-left">
+
+          <button
+            type="button"
+            class="menu-toggle"
+            id="menuToggle"
+            aria-label="Abrir menú"
+          >
+            ☰
+          </button>
+
+          <div class="page-heading">
+            <span class="heading-label">PANEL DE CONTROL</span>
+            <h1 id="pageTitle">Dashboard</h1>
+          </div>
+
+        </div>
+
+
+        <div class="header-actions">
+
+          <a
+            href="../../index.html"
+            class="view-site"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span>↗</span>
+            Portada principal
+          </a>
+
+          <a
+            href="../index.html"
+            class="view-site"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <span>↗</span>
+            Catálogo público
+          </a>
+
+
+          <button
+            type="button"
+            class="header-mode"
+            id="modeButton"
+            aria-label="Cambiar modo"
+          >
+            <span id="modeIcon">☾</span>
+          </button>
+
+        </div>
+
+      </header>
+
+
+      <!-- =================================================
+           SECCIÓN DASHBOARD
+      ================================================== -->
+
+      <section
+        class="admin-section active"
+        id="section-dashboard"
+      >
+
+        <div class="section-intro">
+
+          <div>
+            <span class="section-kicker">
+              BIENVENIDO DE VUELTA
+            </span>
+
+            <h2>
+              Panel de <span>control.</span>
+            </h2>
+
+            <p>
+              Administra tus proyectos, catálogos y estadísticas
+              desde un solo lugar.
+            </p>
+          </div>
+
+          <div class="status-badge">
+            <span></span>
+            Sistema activo
+          </div>
+
+        </div>
+
+
+        <!-- Tarjetas estadísticas -->
+
+        <div class="stats-grid">
+
+          <article class="stat-card">
+
+            <div class="stat-top">
+              <span class="stat-label">
+                PROYECTOS
+              </span>
+
+              <span class="stat-icon purple">
+                ◇
+              </span>
+            </div>
+
+            <strong
+              class="stat-number"
+              id="totalProjects"
+            >
+              0
+            </strong>
+
+            <span class="stat-description">
+              Proyectos publicados
+            </span>
+
+          </article>
+
+
+          <article class="stat-card">
+
+            <div class="stat-top">
+              <span class="stat-label">
+                CATÁLOGOS
+              </span>
+
+              <span class="stat-icon green">
+                ▣
+              </span>
+            </div>
+
+            <strong
+              class="stat-number"
+              id="totalCatalogs"
+            >
+              0
+            </strong>
+
+            <span class="stat-description">
+              Catálogos creados
+            </span>
+
+          </article>
+
+
+          <article class="stat-card">
+
+            <div class="stat-top">
+              <span class="stat-label">
+                VISITAS
+              </span>
+
+              <span class="stat-icon blue">
+                ◉
+              </span>
+            </div>
+
+            <strong
+              class="stat-number"
+              id="totalVisits"
+            >
+              0
+            </strong>
+
+            <span class="stat-description">
+              Visitas registradas
+            </span>
+
+          </article>
+
+
+          <article class="stat-card">
+
+            <div class="stat-top">
+              <span class="stat-label">
+                PUBLICADOS
+              </span>
+
+              <span class="stat-icon orange">
+                ✓
+              </span>
+            </div>
+
+            <strong
+              class="stat-number"
+              id="publishedProjects"
+            >
+              0
+            </strong>
+
+            <span class="stat-description">
+              Proyectos visibles
+            </span>
+
+          </article>
+
+        </div>
+
+
+        <!-- Acciones rápidas -->
+
+        <div class="dashboard-grid">
+
+          <article class="panel-card quick-actions">
+
+            <div class="panel-header">
+
+              <div>
+                <span class="panel-kicker">
+                  ADMINISTRACIÓN
+                </span>
+
+                <h3>
+                  Acciones rápidas
+                </h3>
+              </div>
+
+              <span class="panel-symbol">
+                ✦
+              </span>
+
+            </div>
+
+
+            <div class="quick-grid">
+
+              <button
+                type="button"
+                class="quick-button"
+                data-open-section="proyectos"
+              >
+                <span class="quick-icon purple">
+                  ＋
+                </span>
+
+                <div>
+                  <strong>
+                    Nuevo proyecto
+                  </strong>
+
+                  <small>
+                    Agregar HTML al catálogo
+                  </small>
+                </div>
+              </button>
+
+
+              <button
+                type="button"
+                class="quick-button"
+                data-open-section="catalogos"
+              >
+                <span class="quick-icon green">
+                  ▣
+                </span>
+
+                <div>
+                  <strong>
+                    Nuevo catálogo
+                  </strong>
+
+                  <small>
+                    Crear una categoría
+                  </small>
+                </div>
+              </button>
+
+
+              <button
+                type="button"
+                class="quick-button"
+                data-open-section="visitas"
+              >
+                <span class="quick-icon blue">
+                  ◉
+                </span>
+
+                <div>
+                  <strong>
+                    Ver visitas
+                  </strong>
+
+                  <small>
+                    Consultar estadísticas
+                  </small>
+                </div>
+              </button>
+
+
+              <a
+                href="../../index.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="quick-button"
+              >
+                <span class="quick-icon orange">
+                  ↗
+                </span>
+
+                <div>
+                  <strong>
+                    Ver página
+                  </strong>
+
+                  <small>
+                    Abrir sitio principal
+                  </small>
+                </div>
+              </a>
+
+            </div>
+
+          </article>
+
+
+          <!-- Actividad -->
+
+          <article class="panel-card activity-card">
+
+            <div class="panel-header">
+
+              <div>
+                <span class="panel-kicker">
+                  ACTIVIDAD
+                </span>
+
+                <h3>
+                  Actividad reciente
+                </h3>
+              </div>
+
+              <span class="live-indicator">
+                ● LIVE
+              </span>
+
+            </div>
+
+
+            <div
+              class="activity-list"
+              id="activityList"
+            >
+
+              <div class="empty-activity">
+
+                <span>
+                  ◌
+                </span>
+
+                <p>
+                  Aún no hay actividad registrada.
+                </p>
+
+                <small>
+                  Las acciones aparecerán aquí.
+                </small>
+
+              </div>
+
+            </div>
+
+          </article>
+
+        </div>
+
+      </section>
+
+
+      <!-- =================================================
+           SECCIÓN CATÁLOGOS
+      ================================================== -->
+
+      <section
+        class="admin-section"
+        id="section-catalogos"
+      >
+
+        <div class="section-heading-row">
+
+          <div>
+            <span class="section-kicker">
+              ORGANIZACIÓN
+            </span>
+
+            <h2>
+              Catálogos
+            </h2>
+
+            <p>
+              Organiza tus proyectos por categorías.
+            </p>
+          </div>
+
+          <button
+            type="button"
+            class="primary-button"
+            id="newCatalogButton"
+          >
+            <span>＋</span>
+            Nuevo catálogo
+          </button>
+
+        </div>
+
+
+        <div
+          class="catalog-admin-grid"
+          id="catalogAdminGrid"
+        >
+
+          <div class="admin-empty-state">
+
+            <div class="empty-icon">
+              ▣
+            </div>
+
+            <h3>
+              No hay catálogos todavía
+            </h3>
+
+            <p>
+              Crea tu primer catálogo para comenzar
+              a organizar tus proyectos.
+            </p>
+
+            <button
+              type="button"
+              class="secondary-button"
+              id="emptyNewCatalog"
+            >
+              Crear catálogo
+            </button>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =================================================
+           SECCIÓN PROYECTOS
+      ================================================== -->
+
+      <section
+        class="admin-section"
+        id="section-proyectos"
+      >
+
+        <div class="section-heading-row">
+
+          <div>
+            <span class="section-kicker">
+              CONTENIDO
+            </span>
+
+            <h2>
+              Proyectos
+            </h2>
+
+            <p>
+              Administra los HTML que aparecerán
+              en tu catálogo público.
+            </p>
+          </div>
+
+          <button
+            type="button"
+            class="primary-button"
+            id="newProjectButton"
+          >
+            <span>＋</span>
+            Nuevo proyecto
+          </button>
+
+        </div>
+
+
+        <!-- Filtros -->
+
+        <div class="project-toolbar">
+
+          <div class="project-filters">
+
+            <button
+              type="button"
+              class="filter-button active"
+              data-filter="todos"
+            >
+              Todos
+            </button>
+
+            <button
+              type="button"
+              class="filter-button"
+              data-filter="gratis"
+            >
+              Gratis
+            </button>
+
+            <button
+              type="button"
+              class="filter-button"
+              data-filter="premium"
+            >
+              Premium
+            </button>
+
+            <button
+              type="button"
+              class="filter-button"
+              data-filter="flores"
+            >
+              Flores
+            </button>
+
+            <button
+              type="button"
+              class="filter-button"
+              data-filter="cumpleaños"
+            >
+              Cumpleaños
+            </button>
+
+            <button
+              type="button"
+              class="filter-button"
+              data-filter="corazones"
+            >
+              Corazones
+            </button>
+
+            <button
+              type="button"
+              class="filter-button"
+              data-filter="cartas"
+            >
+              Cartas
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- Lista -->
+
+        <div
+          class="projects-table-wrapper"
+          id="projectsTableWrapper"
+        >
+
+          <div class="projects-table">
+
+            <div class="table-header">
+
+              <span>
+                PROYECTO
+              </span>
+
+              <span>
+                CATEGORÍA
+              </span>
+
+              <span>
+                TIPO
+              </span>
+
+              <span>
+                ESTADO
+              </span>
+
+              <span>
+                ACCIONES
+              </span>
+
+            </div>
+
+
+            <div
+              class="table-body"
+              id="projectsTableBody"
+            >
+
+              <div class="table-empty">
+
+                <span>
+                  ◇
+                </span>
+
+                <strong>
+                  No hay proyectos
+                </strong>
+
+                <p>
+                  Agrega tu primer proyecto HTML.
+                </p>
+
+                <button
+                  type="button"
+                  class="secondary-button"
+                  id="emptyNewProject"
+                >
+                  ＋ Agregar proyecto
+                </button>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =================================================
+           SECCIÓN CÓDIGOS PREMIUM
+      ================================================== -->
+
+      <section
+        class="admin-section"
+        id="section-codigos-premium"
+      >
+
+        <div class="section-heading-row">
+
+          <div>
+            <span class="section-kicker">
+              VENTAS
+            </span>
+
+            <h2>
+              Códigos premium
+            </h2>
+
+            <p>
+              Genera códigos únicos para desbloquear tus proyectos premium.
+            </p>
+          </div>
+
+        </div>
+
+        <form class="premium-code-generator" id="premiumCodeForm">
+
+          <div class="form-group">
+            <label for="premiumProjectSelect">Proyecto premium</label>
+            <select id="premiumProjectSelect" name="proyecto_id" required>
+              <option value="">Cargando proyectos...</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="premiumCodeQuantity">Cantidad</label>
+            <input
+              type="number"
+              id="premiumCodeQuantity"
+              name="cantidad"
+              min="1"
+              max="1000"
+              value="1"
+              required
+            >
+          </div>
+
+          <button type="submit" class="primary-button" id="generatePremiumCodesButton">
+            Generar códigos
+          </button>
+
+        </form>
+
+        <div class="premium-code-list-heading">
+          <div>
+            <h3>Códigos disponibles</h3>
+            <span id="premiumCodeCount">0 códigos</span>
+          </div>
+
+          <button
+            type="button"
+            class="secondary-button"
+            id="copyAllPremiumCodesButton"
+            disabled
+          >
+            Copiar todos
+          </button>
+        </div>
+
+        <p class="premium-code-status" id="premiumCodeStatus" role="status" aria-live="polite"></p>
+
+        <div class="projects-table-wrapper premium-code-table-wrapper">
+          <table class="premium-code-table">
+            <thead>
+              <tr>
+                <th scope="col">CÓDIGO</th>
+                <th scope="col">PROYECTO</th>
+                <th scope="col">FECHA DE CREACIÓN</th>
+                <th scope="col">ACCIÓN</th>
+              </tr>
+            </thead>
+            <tbody id="premiumCodesTableBody">
+              <tr>
+                <td colspan="4" class="premium-code-empty">Cargando códigos...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      </section>
+
+
+      <!-- =================================================
+           SECCIÓN VISITAS
+      ================================================== -->
+
+      <section
+        class="admin-section"
+        id="section-visitas"
+      >
+
+        <div class="section-heading-row">
+
+          <div>
+            <span class="section-kicker">
+              ANALÍTICA
+            </span>
+
+            <h2>
+              Visitas
+            </h2>
+
+            <p>
+              Consulta las visitas registradas en tu sitio.
+            </p>
+          </div>
+
+          <div class="date-filter">
+            <span>PERÍODO</span>
+
+            <select id="visitPeriod">
+              <option value="7">Últimos 7 días</option>
+              <option value="30">Últimos 30 días</option>
+              <option value="90">Últimos 90 días</option>
+            </select>
+          </div>
+
+        </div>
+
+
+        <div class="visit-stats">
+
+          <article class="visit-stat">
+
+            <span>
+              VISITAS TOTALES
+            </span>
+
+            <strong id="visitsTotal">
+              0
+            </strong>
+
+          </article>
+
+
+          <article class="visit-stat">
+
+            <span>
+              HOY
+            </span>
+
+            <strong id="visitsToday">
+              0
+            </strong>
+
+          </article>
+
+
+          <article class="visit-stat">
+
+            <span>
+              ESTE MES
+            </span>
+
+            <strong id="visitsMonth">
+              0
+            </strong>
+
+          </article>
+
+        </div>
+
+
+        <article class="panel-card chart-card">
+
+          <div class="panel-header">
+
+            <div>
+              <span class="panel-kicker">
+                TRÁFICO
+              </span>
+
+              <h3>
+                Visitas del período
+              </h3>
+            </div>
+
+          </div>
+
+
+          <div
+            class="chart-placeholder"
+            id="visitsChart"
+          >
+
+            <div class="chart-grid-lines">
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+
+            <div class="chart-empty">
+              <span>⌁</span>
+
+              <p>
+                Las estadísticas aparecerán
+                cuando el backend esté conectado.
+              </p>
+            </div>
+
+          </div>
+
+        </article>
+
+      </section>
+
+
+      <!-- =================================================
+           SECCIÓN CONFIGURACIÓN
+      ================================================== -->
+
+      <section
+        class="admin-section"
+        id="section-configuracion"
+      >
+
+        <div class="section-heading-row">
+
+          <div>
+            <span class="section-kicker">
+              SISTEMA
+            </span>
+
+            <h2>
+              Configuración
+            </h2>
+
+            <p>
+              Configura la información de tu catálogo.
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="settings-grid">
+
+          <!-- Información -->
+
+          <article class="panel-card settings-card">
+
+            <div class="panel-header">
+
+              <div>
+                <span class="panel-kicker">
+                  IDENTIDAD
+                </span>
+
+                <h3>
+                  Información del sitio
+                </h3>
+              </div>
+
+              <span class="panel-symbol">
+                ✦
+              </span>
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="siteName">
+                Nombre
+              </label>
+
+              <input
+                type="text"
+                id="siteName"
+                value="IruCodex"
+                placeholder="Nombre del sitio"
+              >
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="siteProfession">
+                Profesión
+              </label>
+
+              <input
+                type="text"
+                id="siteProfession"
+                value="Ingeniero De Software"
+                placeholder="Profesión"
+              >
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="siteDescription">
+                Descripción
+              </label>
+
+              <textarea
+                id="siteDescription"
+                rows="4"
+                placeholder="Descripción del sitio"
+              >Explora códigos desarrollados con HTML modernos y creativos con animaciones efectos visuales y diseños interactivos</textarea>
+
+            </div>
+
+
+            <button
+              type="button"
+              class="primary-button"
+              id="saveSettings"
+            >
+              Guardar cambios
+            </button>
+
+          </article>
+
+
+          <!-- WhatsApp -->
+
+          <article class="panel-card settings-card">
+
+            <div class="panel-header">
+
+              <div>
+                <span class="panel-kicker">
+                  CONTACTO
+                </span>
+
+                <h3>
+                  Canal de WhatsApp
+                </h3>
+              </div>
+
+              <span class="panel-symbol green-symbol">
+                ◉
+              </span>
+
+            </div>
+
+
+            <div class="form-group">
+
+              <label for="whatsappLink">
+                Enlace del canal
+              </label>
+
+              <input
+                type="url"
+                id="whatsappLink"
+                placeholder="https://chat.whatsapp.com/..."
+              >
+
+              <small>
+                Puedes agregar el enlace cuando tengas
+                disponible tu canal.
+              </small>
+
+            </div>
+
+
+            <button
+              type="button"
+              class="secondary-button"
+              id="saveWhatsapp"
+            >
+              Guardar enlace
+            </button>
+
+          </article>
+
+        </div>
+
+      </section>
+
+    </main>
+
+    <div
+      class="sidebar-overlay"
+      id="sidebarOverlay"
+      aria-hidden="true"
+    ></div>
+
+  </div>
+
+
+  <!-- =====================================================
+       MODAL: NUEVO CATÁLOGO
+  ====================================================== -->
+
+  <div
+    class="modal"
+    id="catalogModal"
+    aria-hidden="true"
+  >
+
+    <div class="modal-box">
+
+      <button
+        type="button"
+        class="modal-close"
+        data-close-modal="catalogModal"
+      >
+        ×
+      </button>
+
+      <div class="modal-icon">
+        ▣
+      </div>
+
+      <span class="modal-kicker">
+        NUEVO CATÁLOGO
+      </span>
+
+      <h2>
+        Crear catálogo
+      </h2>
+
+      <p>
+        Crea una nueva categoría para organizar
+        tus proyectos.
+      </p>
+
+
+      <form id="catalogForm">
+
+        <div class="form-group">
+
+          <label for="catalogName">
+            Nombre del catálogo
+          </label>
+
+          <input
+            type="text"
+            id="catalogName"
+            name="catalogName"
+            placeholder="Ej. Flores"
+            required
+          >
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="catalogCategory">
+            Categoría
+          </label>
+
+          <select
+            id="catalogCategory"
+            name="catalogCategory"
+          >
+            <option value="todos">Todos</option>
+            <option value="gratis">Gratis</option>
+            <option value="premium">Premium</option>
+            <option value="flores">Flores</option>
+            <option value="cumpleanos">Cumpleaños</option>
+            <option value="corazones">Corazones</option>
+            <option value="cartas">Cartas</option>
+          </select>
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="catalogDescription">
+            Descripción
+          </label>
+
+          <textarea
+            id="catalogDescription"
+            name="catalogDescription"
+            rows="3"
+            placeholder="Descripción del catálogo"
+          ></textarea>
+
+        </div>
+
+
+        <div class="modal-actions">
+
+          <button
+            type="button"
+            class="secondary-button"
+            data-close-modal="catalogModal"
+          >
+            Cancelar
+          </button>
+
+          <button
+            type="submit"
+            class="primary-button"
+          >
+            Crear catálogo
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       MODAL: NUEVO PROYECTO
+  ====================================================== -->
+
+  <div
+    class="modal"
+    id="projectModal"
+    aria-hidden="true"
+  >
+
+    <div class="modal-box modal-large">
+
+      <button
+        type="button"
+        class="modal-close"
+        data-close-modal="projectModal"
+        aria-label="Cerrar"
+      >
+        ×
+      </button>
+
+      <div class="modal-icon">
+        ◇
+      </div>
+
+      <span class="modal-kicker">
+        NUEVO PROYECTO
+      </span>
+
+      <h2>
+        Agregar proyecto
+      </h2>
+
+      <p>
+        Vincula un proyecto completo desde la carpeta
+        <strong>admin/proyectohtml/</strong>.
+      </p>
+
+      <form id="projectForm" autocomplete="off">
+
+        <div class="form-row">
+
+          <div class="form-group">
+
+            <label for="projectName">
+              Nombre del proyecto
+            </label>
+
+            <input
+              type="text"
+              id="projectName"
+              name="projectName"
+              placeholder="Ej. Carta de cumpleaños"
+              maxlength="120"
+              required
+            >
+
+          </div>
+
+          <div class="form-group">
+
+            <label for="projectType">
+              Tipo
+            </label>
+
+            <select
+              id="projectType"
+              name="projectType"
+            >
+              <option value="gratis">
+                Gratis
+              </option>
+
+              <option value="premium">
+                Premium
+              </option>
+            </select>
+
+          </div>
+
+        </div>
+
+
+        <div class="form-row">
+
+          <div class="form-group">
+
+            <label for="projectCategory">
+              Categoría
+            </label>
+
+            <select
+              id="projectCategory"
+              name="projectCategory"
+            >
+              <option value="gratis">
+                Gratis
+              </option>
+
+              <option value="premium">
+                Premium
+              </option>
+
+              <option value="flores">
+                Flores
+              </option>
+
+              <option value="cumpleaños">
+                Cumpleaños
+              </option>
+
+              <option value="corazones">
+                Corazones
+              </option>
+
+              <option value="cartas">
+                Cartas
+              </option>
+
+            </select>
+
+          </div>
+
+          <div class="form-group">
+
+            <label for="projectLink">
+              Enlace personalizado (opcional)
+            </label>
+
+            <input
+              type="url"
+              id="projectLink"
+              name="projectLink"
+              placeholder="https://..."
+            >
+
+          </div>
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="projectFolder">
+            Carpeta del proyecto
+          </label>
+
+          <input
+            type="text"
+            id="projectFolder"
+            name="projectFolder"
+            placeholder="Ej. dedicatoria"
+            pattern="[A-Za-z0-9_\-]+"
+            maxlength="80"
+            required
+            spellcheck="false"
+            autocapitalize="none"
+            autocomplete="off"
+          >
+
+          <div
+            class="folder-preview"
+            style="margin-top:10px;padding:12px 14px;border:1px solid rgba(255,255,255,.10);border-radius:12px;background:rgba(255,255,255,.035);"
+          >
+            <span style="opacity:.65;">Ruta:</span>
+            <code>admin/proyectohtml/<span id="projectFolderPreview">nombre-carpeta</span>/</code>
+          </div>
+
+          <small>
+            Escribe solamente el nombre de la carpeta. No uses /, \, .. ni rutas completas.
+          </small>
+
+        </div>
+
+
+        <div
+          class="folder-info"
+          style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:18px 0;"
+        >
+
+          <div
+            class="folder-info-item"
+            style="padding:15px;border:1px solid rgba(255,255,255,.09);border-radius:14px;background:rgba(255,255,255,.025);"
+          >
+            <strong style="display:block;margin-bottom:5px;">Proyecto completo</strong>
+            <small>HTML, CSS, JS, imágenes, audio, vídeo y demás archivos.</small>
+          </div>
+
+          <div
+            class="folder-info-item"
+            style="padding:15px;border:1px solid rgba(255,255,255,.09);border-radius:14px;background:rgba(255,255,255,.025);"
+          >
+            <strong style="display:block;margin-bottom:5px;">Vinculación automática</strong>
+            <small>La portada abrirá admin/proyectohtml/nombre/index.html.</small>
+          </div>
+
+          <div
+            class="folder-info-item"
+            style="padding:15px;border:1px solid rgba(255,255,255,.09);border-radius:14px;background:rgba(255,255,255,.025);"
+          >
+            <strong style="display:block;margin-bottom:5px;">Archivo de entrada</strong>
+            <small>El proyecto debe contener un <code>index.html</code>.</small>
+          </div>
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="projectDescription">
+            Descripción
+          </label>
+
+          <textarea
+            id="projectDescription"
+            name="projectDescription"
+            rows="3"
+            maxlength="500"
+            placeholder="Describe brevemente el proyecto..."
+          ></textarea>
+
+        </div>
+
+
+        <textarea
+          id="projectHtml"
+          name="projectHtml"
+          hidden
+          aria-hidden="true"
+        ></textarea>
+
+        <div class="form-row media-fields">
+
+          <div class="form-group">
+            <label for="projectImage">Foto de portada</label>
+            <input
+              type="file"
+              id="projectImage"
+              name="projectImage"
+              accept="image/png,image/jpeg,image/webp"
+            >
+            <small>PNG, JPG o WEBP. Máximo 50 MB.</small>
+            <div class="media-preview" id="projectImagePreview" aria-live="polite">
+              <span>Sin foto seleccionada</span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="projectVideo">Video de portada</label>
+            <input
+              type="file"
+              id="projectVideo"
+              name="projectVideo"
+              accept="video/mp4,video/webm,video/quicktime"
+            >
+            <small>MP4, WEBM o MOV. Máximo 100 MB.</small>
+            <div class="media-preview" id="projectVideoPreview" aria-live="polite">
+              <span>Sin video seleccionado</span>
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class="publish-option">
+
+          <label class="switch-label">
+
+            <input
+              type="checkbox"
+              id="projectPublished"
+              name="projectPublished"
+              checked
+            >
+
+            <span class="switch"></span>
+
+            <span>
+              Publicar proyecto inmediatamente
+            </span>
+
+          </label>
+
+        </div>
+
+
+        <div class="modal-actions">
+
+          <button
+            type="button"
+            class="secondary-button"
+            data-close-modal="projectModal"
+          >
+            Cancelar
+          </button>
+
+          <button
+            type="submit"
+            class="primary-button"
+          >
+            Vincular proyecto
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       NOTIFICACIÓN
+  ====================================================== -->
+
+  <div
+    class="system-message"
+    id="systemMessage"
+    aria-live="polite"
+  >
+
+    <div class="system-message-box">
+
+      <span
+        class="system-message-icon"
+        id="messageIcon"
+      >
+        ✦
+      </span>
+
+      <div class="system-message-content">
+
+        <strong id="messageTitle">
+          IruCodex
+        </strong>
+
+        <p id="messageText">
+          Sistema listo.
+        </p>
+
+      </div>
+
+      <button
+        type="button"
+        class="system-message-close"
+        id="messageClose"
+        aria-label="Cerrar"
+      >
+        ×
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       JAVASCRIPT
+  ====================================================== -->
+
+  <script src="script.js"></script>
+
+</body>
+</html>

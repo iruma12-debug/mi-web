@@ -1,0 +1,13 @@
+node_modules/
+.env
+.env.*
+!.env.example
+
+*.log
+
+backend/node_modules/
+backend/.env
+backend/.env.*
+
+backend/db/*.db-shm
+backend/db/*.db-wal

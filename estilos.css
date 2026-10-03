@@ -1,0 +1,1305 @@
+/* ============================================================
+   IRUCODEX — PREMIUM DARK INTERFACE
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+
+/* ============================================================
+   VARIABLES
+   ============================================================ */
+
+:root {
+    --bg: #030504;
+    --bg-soft: #070a08;
+
+    --white: #f5f7f6;
+    --text: #e8ece9;
+    --muted: #8b928d;
+
+    --green: #25ff72;
+    --green-soft: #13d957;
+    --green-dark: #0c7c36;
+
+    --border: rgba(255, 255, 255, 0.10);
+    --border-hover: rgba(37, 255, 114, 0.48);
+
+    --glass: rgba(12, 16, 13, 0.62);
+    --glass-strong: rgba(9, 13, 10, 0.86);
+
+    --shadow:
+        0 20px 60px rgba(0, 0, 0, 0.55);
+
+    --green-glow:
+        0 0 25px rgba(37, 255, 114, 0.12);
+
+    --radius: 22px;
+}
+
+
+/* ============================================================
+   RESET
+   ============================================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at 50% -10%,
+            rgba(23, 92, 48, 0.18),
+            transparent 38%
+        ),
+        radial-gradient(
+            circle at 0% 100%,
+            rgba(17, 86, 43, 0.08),
+            transparent 35%
+        ),
+        var(--bg);
+
+    color: var(--text);
+
+    font-family: 'Inter', sans-serif;
+
+    overflow-x: hidden;
+
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+
+button,
+a {
+    font: inherit;
+}
+
+
+button {
+    border: 0;
+}
+
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+/* ============================================================
+   BACKGROUND
+   ============================================================ */
+
+#background {
+    position: fixed;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    overflow: hidden;
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+
+#background::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background:
+        linear-gradient(
+            115deg,
+            transparent 0%,
+            rgba(42, 255, 112, 0.018) 48%,
+            transparent 100%
+        );
+
+    opacity: 0.8;
+}
+
+
+#background::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background-image:
+        linear-gradient(
+            rgba(255,255,255,0.012) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,0.012) 1px,
+            transparent 1px
+        );
+
+    background-size: 70px 70px;
+
+    mask-image: linear-gradient(
+        to bottom,
+        black,
+        transparent 85%
+    );
+
+    opacity: 0.25;
+}
+
+
+/* ============================================================
+   GLOW
+   ============================================================ */
+
+.background-glow {
+    position: absolute;
+
+    width: 430px;
+    height: 430px;
+
+    border-radius: 50%;
+
+    filter: blur(120px);
+
+    opacity: 0.08;
+}
+
+
+.background-glow-one {
+    top: -250px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    background: #20ff6b;
+}
+
+
+.background-glow-two {
+    bottom: -300px;
+    right: -160px;
+
+    background: #0aff55;
+}
+
+
+/* ============================================================
+   PARTICLES
+   ============================================================ */
+
+#particles {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+
+#particles::before,
+#particles::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: -4px;
+    width: 2px;
+    height: 2px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow:
+        8vw -12vh 0 rgba(37, 255, 114, 0.55),
+        19vw -37vh 0 rgba(255, 255, 255, 0.42),
+        31vw -68vh 0 rgba(37, 255, 114, 0.45),
+        44vw -24vh 0 rgba(37, 255, 114, 0.5),
+        57vw -83vh 0 rgba(255, 255, 255, 0.38),
+        69vw -49vh 0 rgba(37, 255, 114, 0.58),
+        82vw -17vh 0 rgba(255, 255, 255, 0.4),
+        94vw -61vh 0 rgba(37, 255, 114, 0.48),
+        14vw -91vh 0 rgba(255, 255, 255, 0.35),
+        38vw -45vh 0 rgba(37, 255, 114, 0.42),
+        63vw -7vh 0 rgba(255, 255, 255, 0.4),
+        89vw -99vh 0 rgba(37, 255, 114, 0.5);
+    opacity: 0;
+    animation: particle-rise 24s linear infinite;
+}
+
+
+#particles::after {
+    width: 3px;
+    height: 3px;
+    box-shadow:
+        5vw -31vh 0 rgba(255, 255, 255, 0.42),
+        25vw -76vh 0 rgba(37, 255, 114, 0.5),
+        48vw -55vh 0 rgba(255, 255, 255, 0.36),
+        73vw -93vh 0 rgba(37, 255, 114, 0.48),
+        97vw -39vh 0 rgba(255, 255, 255, 0.4),
+        34vw -4vh 0 rgba(37, 255, 114, 0.44),
+        61vw -22vh 0 rgba(255, 255, 255, 0.38),
+        86vw -69vh 0 rgba(37, 255, 114, 0.5);
+    animation-duration: 32s;
+    animation-delay: -13s;
+}
+
+
+@keyframes particle-rise {
+    0% {
+        transform: translate3d(0, 0, 0);
+        opacity: 0;
+    }
+
+    12%,
+    82% {
+        opacity: 0.55;
+    }
+
+    100% {
+        transform: translate3d(24px, -115vh, 0);
+        opacity: 0;
+    }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+    #particles::before,
+    #particles::after {
+        animation: none;
+        opacity: 0.35;
+    }
+}
+
+
+.particle {
+    position: absolute;
+
+    width: 2px;
+    height: 2px;
+
+    border-radius: 50%;
+
+    background: var(--green);
+
+    box-shadow:
+        0 0 7px rgba(37, 255, 114, 0.85);
+
+    opacity: 0.35;
+}
+
+
+/* ============================================================
+   MAIN
+   ============================================================ */
+
+.profile-page {
+    position: relative;
+    z-index: 2;
+
+    width: min(100%, 620px);
+
+    min-height: 100vh;
+
+    margin: 0 auto;
+
+    padding:
+        76px 24px
+        42px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+/* ============================================================
+   PROFILE HEADER
+   ============================================================ */
+
+.profile-header {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+}
+
+
+/* ============================================================
+   PROFILE IMAGE
+   ============================================================ */
+
+.profile-picture {
+    position: relative;
+
+    width: 132px;
+    height: 132px;
+
+    padding: 3px;
+
+    margin-bottom: 25px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.65),
+            rgba(37,255,114,0.55),
+            rgba(255,255,255,0.12)
+        );
+
+    box-shadow:
+        0 0 0 1px rgba(255,255,255,0.08),
+        0 0 35px rgba(37,255,114,0.12),
+        0 18px 50px rgba(0,0,0,0.55);
+
+    isolation: isolate;
+}
+
+
+.profile-picture::before {
+    content: "";
+
+    position: absolute;
+    inset: -7px;
+
+    border-radius: 50%;
+
+    border: 1px solid rgba(37,255,114,0.13);
+
+    opacity: 0.7;
+
+    z-index: -1;
+}
+
+
+.profile-picture::after {
+    content: "";
+
+    position: absolute;
+    inset: 2px;
+
+    border-radius: 50%;
+
+    box-shadow:
+        inset 0 0 25px rgba(0,0,0,0.4);
+
+    pointer-events: none;
+}
+
+
+.profile-picture img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    background: #111;
+
+    position: relative;
+    z-index: 1;
+}
+
+
+/* ============================================================
+   NAME
+   ============================================================ */
+
+.profile-information {
+    max-width: 100%;
+}
+
+
+.profile-name {
+    font-family: 'Space Grotesk', sans-serif;
+
+    font-size: clamp(19px, 4vw, 24px);
+
+    line-height: 1.35;
+
+    font-weight: 600;
+
+    letter-spacing: -0.025em;
+
+    color: var(--white);
+
+    text-shadow:
+        0 0 25px rgba(255,255,255,0.06);
+}
+
+
+.separator {
+    color: rgba(255,255,255,0.28);
+
+    margin:
+        0 4px;
+}
+
+
+.profile-emoji {
+    display: inline-block;
+
+    margin-left: 4px;
+
+    filter:
+        drop-shadow(
+            0 0 7px
+            rgba(37,255,114,0.2)
+        );
+}
+
+
+/* ============================================================
+   SOCIAL LINKS
+   ============================================================ */
+
+.social-links {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-top: 19px;
+}
+
+
+.social-link {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    padding:
+        8px 13px;
+
+    border-radius: 999px;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    background:
+        rgba(255,255,255,0.025);
+
+    color: #aeb5b0;
+
+    font-size: 12px;
+    font-weight: 500;
+
+    transition:
+        transform .25s ease,
+        color .25s ease,
+        border-color .25s ease,
+        background .25s ease,
+        box-shadow .25s ease;
+}
+
+
+.social-link:hover {
+    transform: translateY(-2px);
+
+    color: var(--white);
+
+    border-color:
+        rgba(37,255,114,0.25);
+
+    background:
+        rgba(37,255,114,0.045);
+
+    box-shadow:
+        0 8px 25px
+        rgba(0,0,0,0.25);
+}
+
+
+.social-icon {
+    display: flex;
+
+    width: 17px;
+    height: 17px;
+
+    align-items: center;
+    justify-content: center;
+
+    font-size: 13px;
+
+    color: var(--white);
+}
+
+
+/* ============================================================
+   MAIN ACTIONS
+   ============================================================ */
+
+.main-actions {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 14px;
+
+    margin-top: 48px;
+}
+
+
+/* ============================================================
+   ACTION BUTTON
+   ============================================================ */
+
+.action-button {
+    position: relative;
+
+    width: 100%;
+    min-height: 82px;
+
+    display: flex;
+    align-items: center;
+
+    padding:
+        16px 18px;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    overflow: hidden;
+
+    border-radius: var(--radius);
+
+    border:
+        1px solid var(--border);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.045),
+            rgba(255,255,255,0.018)
+        );
+
+    box-shadow:
+        0 12px 30px rgba(0,0,0,0.25),
+        inset 0 1px 0 rgba(255,255,255,0.025);
+
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+
+    color: var(--white);
+
+    transition:
+        transform .3s cubic-bezier(.2,.8,.2,1),
+        border-color .3s ease,
+        background .3s ease,
+        box-shadow .3s ease;
+}
+
+
+/* brillo interno */
+
+.action-button::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -120%;
+
+    width: 80%;
+    height: 100%;
+
+    background:
+        linear-gradient(
+            100deg,
+            transparent,
+            rgba(255,255,255,0.07),
+            transparent
+        );
+
+    transform: skewX(-20deg);
+
+    transition:
+        left .65s ease;
+}
+
+
+/* brillo verde */
+
+.action-button::after {
+    content: "";
+
+    position: absolute;
+
+    left: 8%;
+    right: 8%;
+    bottom: -40px;
+
+    height: 60px;
+
+    background:
+        radial-gradient(
+            ellipse,
+            rgba(37,255,114,0.13),
+            transparent 70%
+        );
+
+    filter: blur(15px);
+
+    opacity: 0;
+
+    transition:
+        opacity .3s ease;
+}
+
+
+.action-button:hover {
+    transform:
+        translateY(-4px)
+        scale(1.008);
+
+    border-color:
+        var(--border-hover);
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(37,255,114,0.055),
+            rgba(255,255,255,0.025)
+        );
+
+    box-shadow:
+        0 18px 45px rgba(0,0,0,0.38),
+        0 0 30px rgba(37,255,114,0.055),
+        inset 0 1px 0 rgba(255,255,255,0.05);
+}
+
+
+.action-button:hover::before {
+    left: 130%;
+}
+
+
+.action-button:hover::after {
+    opacity: 1;
+}
+
+
+.action-button:active {
+    transform:
+        translateY(-1px)
+        scale(.995);
+}
+
+
+/* ============================================================
+   BUTTON ICON
+   ============================================================ */
+
+.button-icon {
+    position: relative;
+
+    flex: 0 0 46px;
+
+    width: 46px;
+    height: 46px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-right: 15px;
+
+    border-radius: 15px;
+
+    color: var(--green);
+
+    font-size: 19px;
+
+    background:
+        rgba(37,255,114,0.055);
+
+    border:
+        1px solid rgba(37,255,114,0.13);
+
+    box-shadow:
+        inset 0 0 18px rgba(37,255,114,0.025);
+
+    transition:
+        transform .3s ease,
+        background .3s ease,
+        box-shadow .3s ease;
+}
+
+
+.action-button:hover .button-icon {
+    transform:
+        rotate(-3deg)
+        scale(1.06);
+
+    background:
+        rgba(37,255,114,0.10);
+
+    box-shadow:
+        0 0 20px rgba(37,255,114,0.10);
+}
+
+
+/* ============================================================
+   BUTTON CONTENT
+   ============================================================ */
+
+.button-content {
+    min-width: 0;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+
+    flex: 1;
+}
+
+
+.button-title {
+    font-family: 'Space Grotesk', sans-serif;
+
+    font-size: 15px;
+
+    line-height: 1.25;
+
+    font-weight: 600;
+
+    letter-spacing: -0.01em;
+
+    color: #f0f3f1;
+}
+
+
+.button-description {
+    font-size: 11px;
+
+    line-height: 1.4;
+
+    color: #777f79;
+
+    font-weight: 400;
+}
+
+
+/* ============================================================
+   ARROW
+   ============================================================ */
+
+.button-arrow {
+    flex: 0 0 auto;
+
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-left: 10px;
+
+    border-radius: 50%;
+
+    color: #727a74;
+
+    font-size: 16px;
+
+    transition:
+        transform .3s ease,
+        color .3s ease,
+        background .3s ease;
+}
+
+
+.action-button:hover .button-arrow {
+    transform: translateX(4px);
+
+    color: var(--green);
+
+    background:
+        rgba(37,255,114,0.055);
+}
+
+
+/* ============================================================
+   NOTIFICATION OVERLAY
+   ============================================================ */
+
+.notification-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 100;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 24px;
+
+    background:
+        rgba(0,0,0,0.70);
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity .3s ease,
+        visibility .3s ease;
+}
+
+
+.notification-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* ============================================================
+   NOTIFICATION
+   ============================================================ */
+
+.notification {
+    position: relative;
+
+    width: min(100%, 410px);
+
+    padding: 34px 28px 28px;
+
+    border-radius: 25px;
+
+    border:
+        1px solid rgba(37,255,114,0.20);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(17,23,19,0.96),
+            rgba(5,8,6,0.98)
+        );
+
+    box-shadow:
+        0 35px 90px rgba(0,0,0,0.70),
+        0 0 50px rgba(37,255,114,0.055),
+        inset 0 1px 0 rgba(255,255,255,0.045);
+
+    transform:
+        translateY(20px)
+        scale(.96);
+
+    transition:
+        transform .35s cubic-bezier(.2,.8,.2,1);
+}
+
+
+.notification-overlay.active .notification {
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+
+.notification::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 15%;
+    right: 15%;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(37,255,114,0.65),
+            transparent
+        );
+
+    box-shadow:
+        0 0 18px rgba(37,255,114,0.35);
+}
+
+
+/* ============================================================
+   NOTIFICATION CLOSE
+   ============================================================ */
+
+.notification-close {
+    position: absolute;
+
+    top: 14px;
+    right: 14px;
+
+    width: 31px;
+    height: 31px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    color: #707771;
+
+    background:
+        rgba(255,255,255,0.035);
+
+    font-size: 19px;
+
+    transition:
+        color .2s ease,
+        background .2s ease,
+        transform .2s ease;
+}
+
+
+.notification-close:hover {
+    color: white;
+
+    background:
+        rgba(255,255,255,0.08);
+
+    transform: rotate(90deg);
+}
+
+
+/* ============================================================
+   NOTIFICATION SYMBOL
+   ============================================================ */
+
+.notification-symbol {
+    width: 52px;
+    height: 52px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 20px;
+
+    border-radius: 17px;
+
+    color: var(--green);
+
+    font-size: 21px;
+
+    background:
+        rgba(37,255,114,0.065);
+
+    border:
+        1px solid rgba(37,255,114,0.15);
+
+    box-shadow:
+        0 0 25px rgba(37,255,114,0.08);
+}
+
+
+/* ============================================================
+   NOTIFICATION CONTENT
+   ============================================================ */
+
+.notification-content h2 {
+    font-family: 'Space Grotesk', sans-serif;
+
+    font-size: 21px;
+
+    line-height: 1.3;
+
+    color: white;
+
+    margin-bottom: 10px;
+}
+
+
+.notification-content p {
+    color: #8c948e;
+
+    font-size: 13px;
+
+    line-height: 1.65;
+}
+
+
+/* ============================================================
+   NOTIFICATION BUTTON
+   ============================================================ */
+
+.notification-button {
+    width: 100%;
+
+    min-height: 48px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    margin-top: 25px;
+
+    border-radius: 14px;
+
+    cursor: pointer;
+
+    color: #031007;
+
+    background:
+        linear-gradient(
+            135deg,
+            #d9ffe5,
+            #62ff92
+        );
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    box-shadow:
+        0 8px 30px rgba(37,255,114,0.13);
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+}
+
+
+.notification-button:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 35px rgba(37,255,114,0.22);
+}
+
+
+.notification-button:active {
+    transform: scale(.98);
+}
+
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+.profile-footer {
+    width: 100%;
+
+    margin-top: auto;
+    padding-top: 70px;
+
+    text-align: center;
+
+    color: #535b55;
+
+    font-size: 10px;
+
+    line-height: 1.7;
+}
+
+
+.footer-line {
+    width: 70px;
+    height: 1px;
+
+    margin:
+        0 auto 17px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(11, 192, 74, 0.35),
+            transparent
+        );
+}
+
+
+.profile-footer p {
+    color: #69716b;
+
+    margin-bottom: 2px;
+}
+
+
+.profile-footer span {
+    color: #414741;
+}
+
+
+/* ============================================================
+   FOCUS ACCESSIBILITY
+   ============================================================ */
+
+button:focus-visible,
+a:focus-visible {
+    outline: 2px solid var(--green);
+
+    outline-offset: 4px;
+}
+
+
+/* ============================================================
+   RESPONSIVE — TABLET
+   ============================================================ */
+
+@media (min-width: 700px) {
+
+    .profile-page {
+        padding-top: 90px;
+    }
+
+    .profile-picture {
+        width: 145px;
+        height: 145px;
+    }
+
+    .main-actions {
+        margin-top: 52px;
+        gap: 16px;
+    }
+
+    .action-button {
+        min-height: 88px;
+
+        padding:
+            18px 20px;
+    }
+
+    .button-title {
+        font-size: 16px;
+    }
+
+    .button-description {
+        font-size: 12px;
+    }
+}
+
+
+/* ============================================================
+   RESPONSIVE — MOBILE
+   ============================================================ */
+
+@media (max-width: 420px) {
+
+    .profile-page {
+        padding:
+            55px 17px
+            30px;
+    }
+
+    .profile-picture {
+        width: 118px;
+        height: 118px;
+
+        margin-bottom: 22px;
+    }
+
+    .profile-name {
+        font-size: 17px;
+    }
+
+    .social-links {
+        margin-top: 15px;
+    }
+
+    .social-link {
+        padding:
+            7px 11px;
+
+        font-size: 11px;
+    }
+
+    .main-actions {
+        margin-top: 38px;
+    }
+
+    .action-button {
+        min-height: 74px;
+
+        padding:
+            13px 14px;
+
+        border-radius: 19px;
+    }
+
+    .button-icon {
+        flex-basis: 40px;
+
+        width: 40px;
+        height: 40px;
+
+        margin-right: 12px;
+
+        border-radius: 13px;
+    }
+
+    .button-title {
+        font-size: 13px;
+    }
+
+    .button-description {
+        font-size: 10px;
+    }
+
+    .button-arrow {
+        width: 26px;
+        height: 26px;
+
+        font-size: 14px;
+    }
+
+    .notification {
+        padding:
+            30px 22px 22px;
+    }
+}
+
+
+/* ============================================================
+   REDUCE MOTION
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+
+}

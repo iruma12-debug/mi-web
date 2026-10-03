@@ -1,0 +1,21 @@
+{
+  "name": "iru-codex-backend",
+  "version": "1.0.0",
+  "description": "Backend para Iru Codex",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "better-sqlite3": "^12.4.1",
+    "cheerio": "^1.0.0",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "inline-source": "^8.0.3",
+    "multer": "^2.0.2",
+    "postcss": "^8.5.28",
+    "postcss-import": "^17.0.0",
+    "postcss-url": "^10.1.4"
+  }
+}

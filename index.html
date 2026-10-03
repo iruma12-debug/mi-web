@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#050505">
+    <meta name="description" content="IruCodex | Ingeniero De Software">
+
+    <title>IruCodex | Ingeniero De Software</title>
+
+    <!--
+        ============================================================
+        IRUCODEX
+        Página principal
+        ============================================================
+
+        Estructura preparada para conectar posteriormente:
+
+        01. Plantillas web
+        02. Link personalizado
+        03. Grupo de WhatsApp
+
+        Por ahora este archivo contiene únicamente HTML.
+        El diseño visual y las interacciones se agregarán después.
+        ============================================================
+    -->
+
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+
+    <!-- ==========================================================
+         FONDO / DECORACIÓN
+         ========================================================== -->
+
+    <div id="background">
+
+        <div class="background-glow background-glow-one"></div>
+        <div class="background-glow background-glow-two"></div>
+
+        <div id="particles"></div>
+
+    </div>
+
+
+    <!-- ==========================================================
+         CONTENIDO PRINCIPAL
+         ========================================================== -->
+
+    <main class="profile-page">
+
+        <!-- ======================================================
+             PERFIL
+             ====================================================== -->
+
+        <header class="profile-header">
+
+            <div class="profile-picture">
+                <div class="profile-ring"></div>
+
+                <img
+                    src="mi-webimgperfil.png.jpeg"
+                    alt="IruCodex"
+                >
+            </div>
+
+            <div class="profile-information">
+
+                <h1 class="profile-name">
+                    <span class="brand-name">IruCodex</span>
+                    <span class="separator">|</span>
+                    <span class="profession">
+                        Ingeniero De Software
+                    </span>
+                    <span class="profile-emoji">🧑‍💻</span>
+                </h1>
+
+                <div class="profile-line">
+                    <span></span>
+                    <i></i>
+                    <span></span>
+                </div>
+            </div>
+
+            <nav class="social-links" aria-label="Redes sociales">
+
+                <a href="#" class="social-link" id="tiktokLink">
+                    <span class="social-icon">♪</span>
+                    <span class="social-name">TikTok</span>
+                </a>
+
+                <a href="#" class="social-link" id="whatsappLink">
+                    <span class="social-icon">◉</span>
+                    <span class="social-name">WhatsApp</span>
+                </a>
+
+            </nav>
+
+        </header>
+
+
+        <!-- ======================================================
+             BOTONES PRINCIPALES
+             ====================================================== -->
+
+        <section class="main-actions" aria-label="Opciones principales">
+
+
+            <!-- ==================================================
+                 BOTÓN 01
+                 EXPLORAR PLANTILLAS
+                 ================================================== -->
+
+            <button
+                type="button"
+                class="action-button"
+                id="templatesButton"
+                data-page="templates"
+            >
+
+                <span class="button-icon">
+                    ✦
+                </span>
+
+                <span class="button-content">
+
+                    <span class="button-title">
+                        Explora nuestras plantillas web
+                    </span>
+
+                    <span class="button-description">
+                        Descubre diseños para tus próximos proyectos
+                    </span>
+
+                </span>
+
+                <span class="button-arrow">
+                    →
+                </span>
+
+            </button>
+
+
+            <!-- ==================================================
+                 BOTÓN 02
+                 LINK PERSONALIZADO
+                 ================================================== -->
+
+            <button
+                type="button"
+                class="action-button"
+                id="customLinkButton"
+                data-page="custom-link"
+            >
+
+                <span class="button-icon">
+                    ↗
+                </span>
+
+                <span class="button-content">
+
+                    <span class="button-title">
+                        Crea tu HTML personalizado
+                    </span>
+
+                    <span class="button-description">
+                        Dale tu propio estilo a tu enlace
+                    </span>
+
+                </span>
+
+                <span class="button-arrow">
+                    →
+                </span>
+
+            </button>
+
+
+            <!-- ==================================================
+                 BOTÓN 03
+                 GRUPO WHATSAPP
+                 ================================================== -->
+
+            <button
+                type="button"
+                class="action-button"
+                id="groupButton"
+                data-page="whatsapp"
+            >
+
+                <span class="button-icon">
+                    ◉
+                </span>
+
+                <span class="button-content">
+
+                    <span class="button-title">
+                        Grupo de WhatsApp
+                    </span>
+
+                    <span class="button-description">
+                        Únete a nuestra comunidad
+                    </span>
+
+                </span>
+
+                <span class="button-arrow">
+                    →
+                </span>
+
+            </button>
+
+
+        </section>
+
+
+        <!-- ======================================================
+             NOTIFICACIÓN PERSONALIZADA
+             ====================================================== -->
+
+        <div
+            class="notification-overlay"
+            id="notificationOverlay"
+            aria-hidden="true"
+        >
+
+            <div
+                class="notification"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="notificationTitle"
+            >
+
+                <button
+                    type="button"
+                    class="notification-close"
+                    id="notificationClose"
+                    aria-label="Cerrar"
+                >
+                    ×
+                </button>
+
+
+                <div class="notification-symbol">
+                    ✦
+                </div>
+
+
+                <div class="notification-content">
+
+                    <h2 id="notificationTitle">
+                        ¡Gracias por visitar mi página!
+                    </h2>
+
+                    <p>
+                        Este es solo el comienzo de grandes proyectos.
+                        Lo mejor está por venir.
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="notification-button"
+                    id="notificationContinue"
+                >
+                    Continuar
+                    <span>→</span>
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- ======================================================
+             PIE DE PÁGINA
+             ====================================================== -->
+
+        <footer class="profile-footer">
+
+            <div class="footer-line"></div>
+
+            <p>
+                Diseñado y desarrollado por IruCodex
+            </p>
+
+            <span>
+                © 2026 · Todos los derechos reservados
+            </span>
+
+        </footer>
+
+    </main>
+
+
+    <!-- ==========================================================
+         ESTRUCTURA PARA FUTURAS INTERFACES
+         ========================================================== -->
+
+    <div id="pages">
+
+        <!--
+            Estas interfaces se conectarán posteriormente.
+
+            #templates
+            #custom-link
+            #whatsapp
+        -->
+
+    </div>
+
+
+    <!-- ==========================================================
+         JAVASCRIPT
+         ========================================================== -->
+
+    <script src="script.js"></script>
+
+
+</body>
+</html>
